@@ -159,6 +159,7 @@ namespace DevTool.Model
                     int index = text.IndexOf($",,\"{sourceLanguage}\"", StringComparison.Ordinal);
                     if (index == -1)
                     {
+                        // Get translate text
                         Object[] jsonObjs = JsonConvert.DeserializeObject<Object[]>(text);
                         JArray jsonTrans = (JArray)jsonObjs[0];
                         StringBuilder resultTrans = new StringBuilder();
@@ -210,7 +211,7 @@ namespace DevTool.Model
             {
                 if (File.Exists(outputFile))
                 {
-                    // File.Delete(outputFile);
+                    File.Delete(outputFile);
                 }
             }
 
