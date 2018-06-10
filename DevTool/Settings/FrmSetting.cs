@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using DevTool.Common;
 using DevTool.Model;
 using DevTool.Properties;
 
@@ -17,12 +18,17 @@ namespace DevTool.Settings
         public FrmSetting()
         {
             InitializeComponent();
+
+            
         }
         
         private void FrmSetting_Load(object sender, EventArgs e)
         {
             InitCombobox();
             LoadSetting();
+
+            // Move form without border
+            new FormCommon().MoveForm(this.PnlHeader, this);
         }
 
         private void LoadSetting()

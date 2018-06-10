@@ -42,6 +42,7 @@ namespace DevTool.Translation
             this.BtnSpeakSource = new System.Windows.Forms.Button();
             this.LblTranslationTime = new System.Windows.Forms.Label();
             this.BtnTranslate = new System.Windows.Forms.Button();
+            this.PnlForm = new DevTool.CustomControl.CustomPanel();
             this.SuspendLayout();
             // 
             // LblInLang
@@ -192,6 +193,15 @@ namespace DevTool.Translation
             this.BtnTranslate.UseVisualStyleBackColor = false;
             this.BtnTranslate.Click += new System.EventHandler(this.BtnTranslate_Click);
             // 
+            // PnlForm
+            // 
+            this.PnlForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(54)))), ((int)(((byte)(76)))));
+            this.PnlForm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PnlForm.Location = new System.Drawing.Point(0, 0);
+            this.PnlForm.Name = "PnlForm";
+            this.PnlForm.Size = new System.Drawing.Size(565, 492);
+            this.PnlForm.TabIndex = 10;
+            // 
             // TranslationResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -210,6 +220,7 @@ namespace DevTool.Translation
             this.Controls.Add(this.LblOutLang);
             this.Controls.Add(this.TxtInlang);
             this.Controls.Add(this.LblInLang);
+            this.Controls.Add(this.PnlForm);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -238,5 +249,6 @@ namespace DevTool.Translation
         private System.Windows.Forms.Button BtnSpeakSource;
         private Label LblTranslationTime;
         private Button BtnTranslate;
+        private CustomControl.CustomPanel PnlForm;
     }
 }

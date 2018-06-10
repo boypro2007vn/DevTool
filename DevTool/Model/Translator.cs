@@ -206,6 +206,7 @@ namespace DevTool.Model
             }
             catch (Exception ex)
             {
+
                 this.Error = ex;
             }
             finally

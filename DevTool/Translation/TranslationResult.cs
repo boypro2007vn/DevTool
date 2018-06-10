@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DevTool.Common;
 using DevTool.Model;
 using DevTool.Properties;
 using WMPLib;
@@ -18,7 +19,8 @@ namespace DevTool.Translation
 
         private void TranslationResult_Load(object sender, EventArgs e)
         {
-            // To do
+            // Move form without border
+            new FormCommon().MoveForm(this.PnlForm, this);
         }
 
         public void InitControll(Translator translator)
@@ -113,14 +115,14 @@ namespace DevTool.Translation
         private void LblClose_Click(object sender, EventArgs e)
         {
             _wplayer?.close();
-            this.Dispose();
+            this.Close();
         }
 
         private void BtnCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(TxtOutlang.Text);
             _wplayer?.close();
-            this.Dispose();
+            this.Close();
         }
 
         private void BtnSpeakSource_Click(object sender, EventArgs e)

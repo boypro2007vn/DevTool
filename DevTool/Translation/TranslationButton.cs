@@ -115,7 +115,7 @@ namespace DevTool.Translation
                 {
                     _translator = new Translator();
                 }
-                
+
                 this.Cursor = Cursors.WaitCursor;
 
                 _inputLang = Properties.Settings.Default.InputLang;
@@ -160,7 +160,6 @@ namespace DevTool.Translation
                             _frmResult.Focus();
                         }
                     }
-
                 }
                 else
                 {
