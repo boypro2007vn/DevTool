@@ -1,0 +1,13 @@
+C:\Users\namin\source\repos\DevTool\DevTool\bin\Release\DevTool.exe.config
+C:\Users\namin\source\repos\DevTool\DevTool\bin\Release\DevTool.exe
+C:\Users\namin\source\repos\DevTool\DevTool\bin\Release\DevTool.pdb
+C:\Users\namin\source\repos\DevTool\DevTool\bin\Release\Gma.System.MouseKeyHook.dll
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.Properties.Resources.resources
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.Settings.FrmSetting.resources
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.Translation.TranslationButton.resources
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.Translation.TranslationResult.resources
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.csproj.GenerateResource.cache
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.csproj.CoreCompileInputs.cache
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.csproj.CopyComplete
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.exe
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.pdb
