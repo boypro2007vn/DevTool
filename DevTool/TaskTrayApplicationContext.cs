@@ -81,7 +81,7 @@ namespace DevTool
                 _translation = new TranslationButton();
             }
 
-            _translation.InitTranslation(_tranEnable);
+            _translation.Active(_tranEnable);
 
         }
 

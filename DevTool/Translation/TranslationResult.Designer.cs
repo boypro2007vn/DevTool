@@ -48,7 +48,7 @@ namespace DevTool.Translation
             // 
             this.LblInLang.AutoSize = true;
             this.LblInLang.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblInLang.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.LblInLang.ForeColor = System.Drawing.Color.White;
             this.LblInLang.Location = new System.Drawing.Point(56, 47);
             this.LblInLang.Name = "LblInLang";
             this.LblInLang.Size = new System.Drawing.Size(51, 21);
@@ -64,7 +64,8 @@ namespace DevTool.Translation
             this.TxtInlang.Name = "TxtInlang";
             this.TxtInlang.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TxtInlang.Size = new System.Drawing.Size(521, 144);
-            this.TxtInlang.TabIndex = 3;
+            this.TxtInlang.TabIndex = 0;
+            this.TxtInlang.TabStop = false;
             this.TxtInlang.Validated += new System.EventHandler(this.TxtInlang_Validated);
             // 
             // TxtOutlang
@@ -79,13 +80,14 @@ namespace DevTool.Translation
             this.TxtOutlang.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TxtOutlang.Size = new System.Drawing.Size(521, 144);
             this.TxtOutlang.TabIndex = 1;
+            this.TxtOutlang.TabStop = false;
             this.TxtOutlang.Validated += new System.EventHandler(this.TxtOutlang_Validated);
             // 
             // LblOutLang
             // 
             this.LblOutLang.AutoSize = true;
             this.LblOutLang.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblOutLang.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.LblOutLang.ForeColor = System.Drawing.Color.White;
             this.LblOutLang.Location = new System.Drawing.Point(57, 252);
             this.LblOutLang.Name = "LblOutLang";
             this.LblOutLang.Size = new System.Drawing.Size(63, 21);
@@ -96,6 +98,7 @@ namespace DevTool.Translation
             // 
             this.LblSeeMore.AutoSize = true;
             this.LblSeeMore.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSeeMore.LinkColor = System.Drawing.Color.Aqua;
             this.LblSeeMore.Location = new System.Drawing.Point(411, 452);
             this.LblSeeMore.Name = "LblSeeMore";
             this.LblSeeMore.Size = new System.Drawing.Size(114, 21);
@@ -107,9 +110,9 @@ namespace DevTool.Translation
             // LblClose
             // 
             this.LblClose.AutoSize = true;
-            this.LblClose.BackColor = System.Drawing.SystemColors.Control;
+            this.LblClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(54)))), ((int)(((byte)(76)))));
             this.LblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LblClose.ForeColor = System.Drawing.Color.White;
             this.LblClose.Location = new System.Drawing.Point(522, 9);
             this.LblClose.Name = "LblClose";
             this.LblClose.Size = new System.Drawing.Size(24, 24);
@@ -119,14 +122,18 @@ namespace DevTool.Translation
             // 
             // BtnCopy
             // 
-            this.BtnCopy.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.BtnCopy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(165)))), ((int)(((byte)(104)))));
+            this.BtnCopy.FlatAppearance.BorderSize = 0;
+            this.BtnCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCopy.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCopy.Location = new System.Drawing.Point(440, 251);
+            this.BtnCopy.ForeColor = System.Drawing.Color.White;
+            this.BtnCopy.Location = new System.Drawing.Point(461, 251);
             this.BtnCopy.Name = "BtnCopy";
             this.BtnCopy.Size = new System.Drawing.Size(85, 27);
             this.BtnCopy.TabIndex = 2;
+            this.BtnCopy.TabStop = false;
             this.BtnCopy.Text = "Copy";
-            this.BtnCopy.UseVisualStyleBackColor = true;
+            this.BtnCopy.UseVisualStyleBackColor = false;
             this.BtnCopy.Click += new System.EventHandler(this.BtnCopy_Click);
             // 
             // BtnSpeakResult
@@ -162,7 +169,7 @@ namespace DevTool.Translation
             // 
             this.LblTranslationTime.AutoSize = true;
             this.LblTranslationTime.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTranslationTime.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.LblTranslationTime.ForeColor = System.Drawing.Color.White;
             this.LblTranslationTime.Location = new System.Drawing.Point(22, 452);
             this.LblTranslationTime.Name = "LblTranslationTime";
             this.LblTranslationTime.Size = new System.Drawing.Size(204, 21);
@@ -171,20 +178,25 @@ namespace DevTool.Translation
             // 
             // BtnTranslate
             // 
-            this.BtnTranslate.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.BtnTranslate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(165)))), ((int)(((byte)(104)))));
+            this.BtnTranslate.FlatAppearance.BorderSize = 0;
+            this.BtnTranslate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnTranslate.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnTranslate.Location = new System.Drawing.Point(440, 46);
+            this.BtnTranslate.ForeColor = System.Drawing.Color.White;
+            this.BtnTranslate.Location = new System.Drawing.Point(461, 46);
             this.BtnTranslate.Name = "BtnTranslate";
             this.BtnTranslate.Size = new System.Drawing.Size(85, 27);
             this.BtnTranslate.TabIndex = 9;
+            this.BtnTranslate.TabStop = false;
             this.BtnTranslate.Text = "Translate";
-            this.BtnTranslate.UseVisualStyleBackColor = true;
+            this.BtnTranslate.UseVisualStyleBackColor = false;
             this.BtnTranslate.Click += new System.EventHandler(this.BtnTranslate_Click);
             // 
             // TranslationResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
             this.ClientSize = new System.Drawing.Size(565, 492);
             this.ControlBox = false;
             this.Controls.Add(this.BtnTranslate);

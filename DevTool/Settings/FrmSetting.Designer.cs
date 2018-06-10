@@ -29,28 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSetting));
-            this.PnlHeader = new System.Windows.Forms.Panel();
+            this.PnlHeader = new DevTool.CustomControl.CustomPanel();
+            this.Lbl010 = new System.Windows.Forms.Label();
+            this.PicLogo = new System.Windows.Forms.PictureBox();
             this.BtnHelp = new System.Windows.Forms.Button();
             this.BtnMinimize = new System.Windows.Forms.Button();
             this.BtnClose = new System.Windows.Forms.Button();
-            this.PnlTabBar = new System.Windows.Forms.Panel();
+            this.PnlTabBar = new DevTool.CustomControl.CustomPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.BtnTran = new System.Windows.Forms.Button();
+            this.FrmSettings = new DevTool.Settings.FrmHome();
+            this.PnlForm = new DevTool.CustomControl.CustomPanel();
             this.BtnHome = new System.Windows.Forms.Button();
-            this.frmHome1 = new DevTool.Settings.FrmHome();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Lbl010 = new System.Windows.Forms.Label();
             this.PnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
             this.PnlTabBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // PnlHeader
             // 
             this.PnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(53)))), ((int)(((byte)(76)))));
-            this.PnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PnlHeader.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
             this.PnlHeader.Controls.Add(this.Lbl010);
-            this.PnlHeader.Controls.Add(this.pictureBox1);
+            this.PnlHeader.Controls.Add(this.PicLogo);
             this.PnlHeader.Controls.Add(this.BtnHelp);
             this.PnlHeader.Controls.Add(this.BtnMinimize);
             this.PnlHeader.Controls.Add(this.BtnClose);
@@ -58,7 +59,28 @@
             this.PnlHeader.Location = new System.Drawing.Point(0, 0);
             this.PnlHeader.Name = "PnlHeader";
             this.PnlHeader.Size = new System.Drawing.Size(957, 53);
-            this.PnlHeader.TabIndex = 0;
+            this.PnlHeader.TabIndex = 2;
+            // 
+            // Lbl010
+            // 
+            this.Lbl010.AutoSize = true;
+            this.Lbl010.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl010.ForeColor = System.Drawing.Color.White;
+            this.Lbl010.Location = new System.Drawing.Point(73, 17);
+            this.Lbl010.Name = "Lbl010";
+            this.Lbl010.Size = new System.Drawing.Size(96, 23);
+            this.Lbl010.TabIndex = 5;
+            this.Lbl010.Text = "Dev Tool";
+            // 
+            // PicLogo
+            // 
+            this.PicLogo.Image = ((System.Drawing.Image)(resources.GetObject("PicLogo.Image")));
+            this.PicLogo.Location = new System.Drawing.Point(18, 9);
+            this.PicLogo.Name = "PicLogo";
+            this.PicLogo.Size = new System.Drawing.Size(41, 36);
+            this.PicLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicLogo.TabIndex = 3;
+            this.PicLogo.TabStop = false;
             // 
             // BtnHelp
             // 
@@ -102,27 +124,30 @@
             // PnlTabBar
             // 
             this.PnlTabBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(54)))), ((int)(((byte)(76)))));
-            this.PnlTabBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PnlTabBar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
+            this.PnlTabBar.Controls.Add(this.BtnHome);
             this.PnlTabBar.Controls.Add(this.button2);
             this.PnlTabBar.Controls.Add(this.BtnTran);
-            this.PnlTabBar.Controls.Add(this.BtnHome);
             this.PnlTabBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.PnlTabBar.Location = new System.Drawing.Point(0, 53);
             this.PnlTabBar.Name = "PnlTabBar";
-            this.PnlTabBar.Size = new System.Drawing.Size(143, 522);
+            this.PnlTabBar.Size = new System.Drawing.Size(151, 522);
             this.PnlTabBar.TabIndex = 1;
             // 
             // button2
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = global::DevTool.Properties.Resources.home_icon;
-            this.button2.Location = new System.Drawing.Point(3, 215);
+            this.button2.Location = new System.Drawing.Point(0, 209);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 105);
+            this.button2.Size = new System.Drawing.Size(151, 105);
             this.button2.TabIndex = 2;
+            this.button2.TabStop = false;
             this.button2.Text = "Home";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -130,74 +155,66 @@
             // 
             // BtnTran
             // 
-            this.BtnTran.FlatAppearance.BorderSize = 0;
+            this.BtnTran.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
+            this.BtnTran.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
             this.BtnTran.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnTran.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnTran.ForeColor = System.Drawing.Color.White;
             this.BtnTran.Image = global::DevTool.Properties.Resources.trans_icon;
-            this.BtnTran.Location = new System.Drawing.Point(3, 108);
+            this.BtnTran.Location = new System.Drawing.Point(0, 104);
             this.BtnTran.Name = "BtnTran";
-            this.BtnTran.Size = new System.Drawing.Size(137, 105);
+            this.BtnTran.Size = new System.Drawing.Size(151, 105);
             this.BtnTran.TabIndex = 1;
+            this.BtnTran.TabStop = false;
             this.BtnTran.Text = "Translator";
             this.BtnTran.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnTran.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnTran.UseVisualStyleBackColor = true;
             // 
+            // FrmSettings
+            // 
+            this.FrmSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
+            this.FrmSettings.Location = new System.Drawing.Point(164, 66);
+            this.FrmSettings.Name = "FrmSettings";
+            this.FrmSettings.Size = new System.Drawing.Size(779, 495);
+            this.FrmSettings.TabIndex = 0;
+            // 
+            // PnlForm
+            // 
+            this.PnlForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
+            this.PnlForm.Location = new System.Drawing.Point(0, 0);
+            this.PnlForm.Name = "PnlForm";
+            this.PnlForm.Size = new System.Drawing.Size(957, 575);
+            this.PnlForm.TabIndex = 3;
+            // 
             // BtnHome
             // 
-            this.BtnHome.FlatAppearance.BorderSize = 0;
+            this.BtnHome.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
+            this.BtnHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
             this.BtnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnHome.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnHome.ForeColor = System.Drawing.Color.White;
             this.BtnHome.Image = global::DevTool.Properties.Resources.home_icon;
-            this.BtnHome.Location = new System.Drawing.Point(3, 1);
+            this.BtnHome.Location = new System.Drawing.Point(0, 0);
             this.BtnHome.Name = "BtnHome";
-            this.BtnHome.Size = new System.Drawing.Size(137, 105);
+            this.BtnHome.Size = new System.Drawing.Size(151, 105);
             this.BtnHome.TabIndex = 0;
+            this.BtnHome.TabStop = false;
             this.BtnHome.Text = "Home";
             this.BtnHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnHome.UseVisualStyleBackColor = true;
             // 
-            // frmHome1
-            // 
-            this.frmHome1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
-            this.frmHome1.Location = new System.Drawing.Point(140, 53);
-            this.frmHome1.Name = "frmHome1";
-            this.frmHome1.Size = new System.Drawing.Size(817, 522);
-            this.frmHome1.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::DevTool.Properties.Resources.logo_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(18, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 36);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Lbl010
-            // 
-            this.Lbl010.AutoSize = true;
-            this.Lbl010.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl010.ForeColor = System.Drawing.Color.White;
-            this.Lbl010.Location = new System.Drawing.Point(73, 17);
-            this.Lbl010.Name = "Lbl010";
-            this.Lbl010.Size = new System.Drawing.Size(96, 23);
-            this.Lbl010.TabIndex = 5;
-            this.Lbl010.Text = "Dev Tool";
-            // 
             // FrmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
             this.ClientSize = new System.Drawing.Size(957, 575);
-            this.Controls.Add(this.frmHome1);
+            this.Controls.Add(this.FrmSettings);
             this.Controls.Add(this.PnlTabBar);
             this.Controls.Add(this.PnlHeader);
+            this.Controls.Add(this.PnlForm);
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -207,24 +224,25 @@
             this.Load += new System.EventHandler(this.FrmSetting_Load);
             this.PnlHeader.ResumeLayout(false);
             this.PnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).EndInit();
             this.PnlTabBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel PnlHeader;
-        private System.Windows.Forms.Panel PnlTabBar;
-        private System.Windows.Forms.Button BtnHome;
+        private DevTool.CustomControl.CustomPanel PnlHeader;
+        private DevTool.CustomControl.CustomPanel PnlTabBar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button BtnTran;
         private System.Windows.Forms.Button BtnClose;
         private System.Windows.Forms.Button BtnHelp;
         private System.Windows.Forms.Button BtnMinimize;
-        private FrmHome frmHome1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private FrmHome FrmSettings;
+        private System.Windows.Forms.PictureBox PicLogo;
         private System.Windows.Forms.Label Lbl010;
+        private CustomControl.CustomPanel PnlForm;
+        private System.Windows.Forms.Button BtnHome;
     }
 }

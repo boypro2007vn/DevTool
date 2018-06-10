@@ -17,8 +17,6 @@ namespace DevTool.Settings
         public FrmSetting()
         {
             InitializeComponent();
-
-            InitMouseHoverColor();
         }
         
         private void FrmSetting_Load(object sender, EventArgs e)
@@ -83,37 +81,5 @@ namespace DevTool.Settings
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
-        #region Button Hover Event
-
-        private void InitMouseHoverColor()
-        {
-            // Set back color when hover Panel Header
-            foreach (Control control in ((Control)this.PnlHeader).Controls)
-            {
-                if (control is Button)
-                {
-                    control.MouseEnter += (sender, e) => Button_MouseHover(sender, e, Color.DarkRed);
-                    control.MouseLeave += (sender, e) => Button_MouseHover(sender, e, Color.FromArgb(44, 53, 76));
-                }
-            }
-
-            // Set back color when hover Panel TabBar
-            foreach (Control control in ((Control)this.PnlTabBar).Controls)
-            {
-                if (control is Button)
-                {
-                    control.MouseEnter += (sender, e) => Button_MouseHover(sender, e, Color.DarkOrchid);
-                    control.MouseLeave += (sender, e) => Button_MouseHover(sender, e, Color.FromArgb(44, 53, 76));
-                }
-            }
-        }
-
-        private void Button_MouseHover(object sender, EventArgs e, Color color)
-        {
-            ((Button)sender).BackColor = color;
-        }
-
-        #endregion
     }
 }

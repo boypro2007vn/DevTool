@@ -27,7 +27,7 @@ namespace DevTool.Translation
 
         #region Init Controll
 
-        public void InitTranslation(bool vActive)
+        public void Active(bool vActive)
         {
             if (_jKeyboardMouseEvents != null)
             {
