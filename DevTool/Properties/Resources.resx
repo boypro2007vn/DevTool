@@ -148,4 +148,10 @@
     <value>https://translate.google.com/?hl=en&amp;ie=UTF8&amp;text={0}&amp;sl={1}&amp;tl={2}https://translate.google.com/?hl=en&amp;ie=UTF8&amp;text={0}&amp;sl={1}&amp;tl={2}&amp;pc=0&amp;sc=1</value>
     <comment>Connect translation url</comment>
   </data>
+  <data name="MSG001" xml:space="preserve">
+    <value>Save settings success!</value>
+  </data>
+  <data name="TitleComfirm" xml:space="preserve">
+    <value>Comfirm</value>
+  </data>
 </root>

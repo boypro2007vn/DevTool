@@ -80,11 +80,29 @@ namespace DevTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save settings success!.
+        /// </summary>
+        internal static string MSG001 {
+            get {
+                return ResourceManager.GetString("MSG001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to translate_in_tts.mp3.
         /// </summary>
         internal static string SourceLanguageFileName {
             get {
                 return ResourceManager.GetString("SourceLanguageFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comfirm.
+        /// </summary>
+        internal static string TitleComfirm {
+            get {
+                return ResourceManager.GetString("TitleComfirm", resourceCulture);
             }
         }
         

@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using DevTool.Settings;
 using DevTool.Translation;
 
@@ -21,10 +14,11 @@ namespace DevTool
         private FrmSetting _configWindow;
 
         #region Function Setting
+
         /// <summary>
         /// Flag setting of translator
         /// </summary>
-        private bool tranEnable;
+        private bool _tranEnable;
 
         #endregion
 
@@ -54,15 +48,15 @@ namespace DevTool
             _configWindow = new FrmSetting();
 
             // Add Item on muney right-click app
-            MenuItem configMenuItem = new MenuItem("Config", new EventHandler(ShowConfig));
-            MenuItem feetBackMenuItem = new MenuItem("Feetback", new EventHandler(ShowFeetBack));
-            MenuItem exitMenuItem = new MenuItem("Exit", new EventHandler(Exit));
-            _notifyIcon.ContextMenu = new ContextMenu(new MenuItem[] { configMenuItem, feetBackMenuItem, exitMenuItem });
+            MenuItem configMenuItem = new MenuItem("Config", ShowConfig);
+            MenuItem feetBackMenuItem = new MenuItem("Feetback", ShowFeetBack);
+            MenuItem exitMenuItem = new MenuItem("Exit", Exit);
+            _notifyIcon.ContextMenu = new ContextMenu(new[] { configMenuItem, feetBackMenuItem, exitMenuItem });
 
             _notifyIcon.Icon = DevTool.Properties.Resources.AppIcon;
             _notifyIcon.Visible = true;
 
-            DevTool.Properties.Settings.Default.SettingChanging += new SettingChangingEventHandler(SettingChanging);
+            Properties.Settings.Default.SettingChanging += SettingChanging;
         }
 
         /// <summary>
@@ -87,7 +81,7 @@ namespace DevTool
                 _translation = new TranslationButton();
             }
 
-            _translation.InitTranslation(tranEnable);
+            _translation.InitTranslation(_tranEnable);
 
         }
 
@@ -96,7 +90,7 @@ namespace DevTool
         /// </summary>
         private void InitConfig()
         {
-            tranEnable = DevTool.Properties.Settings.Default.Translator;
+            _tranEnable = Properties.Settings.Default.Translator;
         }
 
         #endregion

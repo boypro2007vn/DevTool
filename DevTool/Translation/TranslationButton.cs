@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Web;
 using System.Windows.Forms;
 using DevTool.Model;
 using DevTool.Properties;
@@ -122,9 +118,9 @@ namespace DevTool.Translation
                 
                 this.Cursor = Cursors.WaitCursor;
 
-                _inputLang = DevTool.Properties.Settings.Default.InputLang;
-                _outputLang = DevTool.Properties.Settings.Default.OutputLang;
-                _copyToClipboard = DevTool.Properties.Settings.Default.CopyClipBoard;
+                _inputLang = Properties.Settings.Default.InputLang;
+                _outputLang = Properties.Settings.Default.OutputLang;
+                _copyToClipboard = Properties.Settings.Default.CopyClipBoard;
 
                 string inputText = Clipboard.GetText().Trim();
                 _translator.Translate(inputText, _inputLang, _outputLang);

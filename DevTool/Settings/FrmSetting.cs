@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Windows.Forms;
 using DevTool.Model;
+using DevTool.Properties;
 
 namespace DevTool.Settings
 {
@@ -28,9 +26,9 @@ namespace DevTool.Settings
 
         private void LoadSetting()
         {
-            CboInLang.SelectedValue = DevTool.Properties.Settings.Default.InputLang;
-            CboOutLang.SelectedValue = DevTool.Properties.Settings.Default.OutputLang;
-            ChkCopyClipBoard.Checked = DevTool.Properties.Settings.Default.CopyClipBoard;
+            CboInLang.SelectedValue = Properties.Settings.Default.InputLang;
+            CboOutLang.SelectedValue = Properties.Settings.Default.OutputLang;
+            ChkCopyClipBoard.Checked = Properties.Settings.Default.CopyClipBoard;
         }
         #region ComboboxEvent
 
@@ -72,7 +70,7 @@ namespace DevTool.Settings
             DevTool.Properties.Settings.Default.CopyClipBoard = ChkCopyClipBoard.Checked;
             DevTool.Properties.Settings.Default.Save();
 
-            MessageBox.Show("Save success!", "Comfirm", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Resources.MSG001, Resources.TitleComfirm, MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
 
