@@ -24,6 +24,7 @@ namespace DevTool.Model
         /// The language to translation mode map.
         /// </summary>
         private static Dictionary<string, string> _languageList;
+
         #endregion
 
         #region Properties
