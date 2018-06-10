@@ -16,3 +16,4 @@ C:\Users\namin\source\repos\DevTool\DevTool\obj\Debug\Interop.WMPLib.dll
 C:\Users\namin\source\repos\DevTool\DevTool\obj\Debug\DevTool.csproj.ResolveComReference.cache
 C:\Users\namin\source\repos\DevTool\DevTool\bin\Debug\Newtonsoft.Json.dll
 C:\Users\namin\source\repos\DevTool\DevTool\bin\Debug\Newtonsoft.Json.xml
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Debug\DevTool.Settings.FrmHome.resources

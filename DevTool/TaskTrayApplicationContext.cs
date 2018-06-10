@@ -53,7 +53,7 @@ namespace DevTool
             MenuItem exitMenuItem = new MenuItem("Exit", Exit);
             _notifyIcon.ContextMenu = new ContextMenu(new[] { configMenuItem, feetBackMenuItem, exitMenuItem });
 
-            _notifyIcon.Icon = DevTool.Properties.Resources.AppIcon;
+            _notifyIcon.Icon = DevTool.Properties.Resources.AppIcon_48;
             _notifyIcon.Visible = true;
 
             Properties.Settings.Default.SettingChanging += SettingChanging;

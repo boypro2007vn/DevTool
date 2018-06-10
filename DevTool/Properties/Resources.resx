@@ -117,41 +117,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AppIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Images\AppIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ERR001" xml:space="preserve">
-    <value>Cannot find the translation for this text. Try it on the website?</value>
-  </data>
-  <data name="SourceLanguageFileName" xml:space="preserve">
-    <value>translate_in_tts.mp3</value>
+  <data name="MSG001" xml:space="preserve">
+    <value>Save settings success!</value>
   </data>
   <data name="TitleError" xml:space="preserve">
     <value>Error</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="trans_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\trans-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\speak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TranslateLanguageFileName" xml:space="preserve">
     <value>translate_out_tts.mp3</value>
   </data>
-  <data name="TranslationTime" xml:space="preserve">
-    <value>Translated in {0} seconds</value>
+  <data name="AppIcon_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\AppIcon_128.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UrlFileTranslate" xml:space="preserve">
-    <value>https://translate.googleapis.com/translate_a/single?client=gtx&amp;sl={0}&amp;tl={1}&amp;dt=t&amp;q={2}</value>
-    <comment>Get file of translation</comment>
+  <data name="minimize_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\minimize_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TitleComfirm" xml:space="preserve">
+    <value>Comfirm</value>
   </data>
   <data name="UrlSpeechTranslate" xml:space="preserve">
     <value>https://translate.googleapis.com/translate_tts?ie=UTF-8&amp;q={0}&amp;tl={1}&amp;total=1&amp;idx=0&amp;textlen={2}&amp;client=gtx</value>
     <comment>Get speech file of translation</comment>
   </data>
+  <data name="TranslationTime" xml:space="preserve">
+    <value>Translated in {0} seconds</value>
+  </data>
+  <data name="btnTran" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\btnTran.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\close_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="UrlTranslate" xml:space="preserve">
     <value>https://translate.google.com/?hl=en&amp;ie=UTF8&amp;text={0}&amp;sl={1}&amp;tl={2}https://translate.google.com/?hl=en&amp;ie=UTF8&amp;text={0}&amp;sl={1}&amp;tl={2}&amp;pc=0&amp;sc=1</value>
     <comment>Connect translation url</comment>
   </data>
-  <data name="MSG001" xml:space="preserve">
-    <value>Save settings success!</value>
+  <data name="AppIcon_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\AppIcon_256.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TitleComfirm" xml:space="preserve">
-    <value>Comfirm</value>
+  <data name="SourceLanguageFileName" xml:space="preserve">
+    <value>translate_in_tts.mp3</value>
+  </data>
+  <data name="AppIcon_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\AppIcon_48.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ERR001" xml:space="preserve">
+    <value>Cannot find the translation for this text. Try it on the website?</value>
+  </data>
+  <data name="help_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\help_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UrlFileTranslate" xml:space="preserve">
+    <value>https://translate.googleapis.com/translate_a/single?client=gtx&amp;sl={0}&amp;tl={1}&amp;dt=t&amp;q={2}</value>
+    <comment>Get file of translation</comment>
+  </data>
+  <data name="home_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\home_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Images\logo_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

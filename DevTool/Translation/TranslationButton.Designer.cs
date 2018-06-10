@@ -31,21 +31,20 @@ namespace DevTool.Translation
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TranslationButton));
-            this.BtnTran = new System.Windows.Forms.Button();
+            this.BtnTrans = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnTrans)).BeginInit();
             this.SuspendLayout();
             // 
-            // BtnTran
+            // BtnTrans
             // 
-            this.BtnTran.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnTran.BackgroundImage")));
-            this.BtnTran.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnTran.FlatAppearance.BorderSize = 0;
-            this.BtnTran.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnTran.Location = new System.Drawing.Point(-1, -1);
-            this.BtnTran.Name = "BtnTran";
-            this.BtnTran.Size = new System.Drawing.Size(33, 33);
-            this.BtnTran.TabIndex = 1;
-            this.BtnTran.UseVisualStyleBackColor = true;
-            this.BtnTran.Click += new System.EventHandler(this.BtnTran_Click);
+            this.BtnTrans.Image = global::DevTool.Properties.Resources.btnTran;
+            this.BtnTrans.Location = new System.Drawing.Point(-3, -3);
+            this.BtnTrans.Name = "BtnTrans";
+            this.BtnTrans.Size = new System.Drawing.Size(36, 37);
+            this.BtnTrans.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.BtnTrans.TabIndex = 0;
+            this.BtnTrans.TabStop = false;
+            this.BtnTrans.Click += new System.EventHandler(this.BtnTran_Click);
             // 
             // TranslationButton
             // 
@@ -54,7 +53,7 @@ namespace DevTool.Translation
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(31, 31);
             this.ControlBox = false;
-            this.Controls.Add(this.BtnTran);
+            this.Controls.Add(this.BtnTrans);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(37, 37);
@@ -63,12 +62,13 @@ namespace DevTool.Translation
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            ((System.ComponentModel.ISupportInitialize)(this.BtnTrans)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button BtnTran;
+        private PictureBox BtnTrans;
     }
 }
