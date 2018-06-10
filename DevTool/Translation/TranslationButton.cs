@@ -147,18 +147,15 @@ namespace DevTool.Translation
                             Clipboard.SetText(_translator.TranslationResultText);
                         }
 
-                        if (_frmResult == null || _frmResult.IsDisposed)
+                        if (_frmResult == null)
                         {
                             _frmResult = new TranslationResult();
-                            _frmResult.InitControll(_translator);
-                            _frmResult.Show();
                         }
-                        else
-                        {
-                            _frmResult.InitControll(_translator);
-                            // Set the form to top window
-                            _frmResult.Focus();
-                        }
+
+                        _frmResult.InitControll(_translator);
+                        _frmResult.Show();
+                        // Set the form to top window
+                        _frmResult.Focus();
                     }
                 }
                 else

@@ -27,7 +27,7 @@ namespace DevTool.Translation
         {
             _translator = translator;
 
-            //Init button tag
+            // Init button tag
             BtnSpeakSource.Tag = String.Empty;
             BtnSpeakResult.Tag = String.Empty;
 
@@ -37,7 +37,7 @@ namespace DevTool.Translation
 
             TxtInlang.Text = translator.TranslationSourceText;
             TxtOutlang.Text = translator.TranslationResultText;
-            LblTranslationTime.Text = string.Format(Resources.TranslationTime, Math.Round(translator.TranslationTime.TotalSeconds,2));
+            LblTranslationTime.Text = string.Format(Resources.TranslationTime, Math.Round(translator.TranslationTime.TotalSeconds, 2));
 
             // ----------------Set form location---------------------------
             int frmWidth = this.Width;
@@ -115,14 +115,14 @@ namespace DevTool.Translation
         private void LblClose_Click(object sender, EventArgs e)
         {
             _wplayer?.close();
-            this.Close();
+            this.Visible = false;
         }
 
         private void BtnCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(TxtOutlang.Text);
             _wplayer?.close();
-            this.Close();
+            this.Visible = false;
         }
 
         private void BtnSpeakSource_Click(object sender, EventArgs e)
