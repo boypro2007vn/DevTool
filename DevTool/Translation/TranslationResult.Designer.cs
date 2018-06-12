@@ -100,7 +100,7 @@ namespace DevTool.Translation
             this.LblSeeMore.AutoSize = true;
             this.LblSeeMore.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSeeMore.LinkColor = System.Drawing.Color.Aqua;
-            this.LblSeeMore.Location = new System.Drawing.Point(411, 452);
+            this.LblSeeMore.Location = new System.Drawing.Point(432, 452);
             this.LblSeeMore.Name = "LblSeeMore";
             this.LblSeeMore.Size = new System.Drawing.Size(114, 21);
             this.LblSeeMore.TabIndex = 4;

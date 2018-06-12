@@ -95,14 +95,6 @@ namespace DevTool.Model
             private set;
         }
 
-        /// <summary>
-        /// Gets the error.
-        /// </summary>
-        public Exception Error {
-            get;
-            private set;
-        }
-
         #endregion
 
         #region Public methods
@@ -121,7 +113,6 @@ namespace DevTool.Model
         {
             // Initialize
             DateTime tmStart = DateTime.Now;
-            this.Error = null;
             this.TranslationTime = TimeSpan.Zero;
             this.SourceLanguage = sourceLanguage;
             this.TranslationLanguage = targetLanguage;
@@ -206,8 +197,7 @@ namespace DevTool.Model
             }
             catch (Exception ex)
             {
-
-                this.Error = ex;
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -256,7 +246,6 @@ namespace DevTool.Model
                 if (File.Exists(vfileName))
                 {
                     return vfileName;
-
                 }
             }
 
@@ -278,10 +267,10 @@ namespace DevTool.Model
         /// <summary>
         /// Get full name language
         /// </summary>
-        public static string GetFullLanguage(string lang)
+        public string GetFullLanguage(string vLang)
         {
             EnsureInitialized();
-            return _languageList[lang];
+            return _languageList[vLang];
         }
 
         /// <summary>

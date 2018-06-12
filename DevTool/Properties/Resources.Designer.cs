@@ -91,6 +91,15 @@ namespace DevTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dev Tool.
+        /// </summary>
+        internal static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap btnTran {
@@ -116,6 +125,15 @@ namespace DevTool.Properties {
         internal static string ERR001 {
             get {
                 return ResourceManager.GetString("ERR001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot get settings. Restore default settings.
+        /// </summary>
+        internal static string Error001 {
+            get {
+                return ResourceManager.GetString("Error001", resourceCulture);
             }
         }
         
@@ -267,6 +285,15 @@ namespace DevTool.Properties {
         internal static string UrlTranslate {
             get {
                 return ResourceManager.GetString("UrlTranslate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A program running on this computer.
+        /// </summary>
+        internal static string WAN001 {
+            get {
+                return ResourceManager.GetString("WAN001", resourceCulture);
             }
         }
     }

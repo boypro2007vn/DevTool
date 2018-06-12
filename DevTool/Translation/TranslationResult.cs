@@ -11,6 +11,14 @@ namespace DevTool.Translation
     {
         private Translator _translator;
         private WindowsMediaPlayer _wplayer;
+        /// <summary>
+        /// Flag to check is speaking
+        /// </summary>
+        private bool _flagSpeech;
+        /// <summary>
+        /// Flag to check is translate
+        /// </summary>
+        private bool _flagTran;
 
         public TranslationResult()
         {
@@ -23,7 +31,7 @@ namespace DevTool.Translation
             new FormCommon().MoveForm(this.PnlForm, this);
         }
 
-        public void InitControll(Translator translator)
+        public void InitControl(Translator translator)
         {
             _translator = translator;
 
@@ -32,8 +40,8 @@ namespace DevTool.Translation
             BtnSpeakResult.Tag = String.Empty;
 
             // Get full name of language
-            LblInLang.Text = Translator.GetFullLanguage(translator.SourceLanguage);
-            LblOutLang.Text = Translator.GetFullLanguage(translator.TranslationLanguage);
+            LblInLang.Text = _translator.GetFullLanguage(translator.SourceLanguage);
+            LblOutLang.Text = _translator.GetFullLanguage(translator.TranslationLanguage);
 
             TxtInlang.Text = translator.TranslationSourceText;
             TxtOutlang.Text = translator.TranslationResultText;
@@ -75,9 +83,9 @@ namespace DevTool.Translation
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
+                _flagSpeech = true;
 
-                _wplayer?.close();
+                this.Cursor = Cursors.WaitCursor;
 
                 if (string.IsNullOrEmpty(vObject.Tag.ToString()))
                 {
@@ -92,7 +100,12 @@ namespace DevTool.Translation
                     }
                 }
 
-                _wplayer = new WindowsMediaPlayer {URL = vObject.Tag.ToString() };
+                if (_wplayer == null)
+                {
+                    _wplayer = new WindowsMediaPlayer();
+                }
+                _wplayer.URL = vObject.Tag.ToString();
+                _wplayer.PlayStateChange += wplayer_Change;
                 _wplayer.controls.play();
             }
             catch (Exception exception)
@@ -103,6 +116,16 @@ namespace DevTool.Translation
             finally
             {
                 this.Cursor =  Cursors.Default;
+                _flagSpeech = false;
+            }
+        }
+
+        private void wplayer_Change(int newState)
+        {
+            // stop
+            if (newState == 1)
+            {
+                _wplayer.close();
             }
         }
 
@@ -114,19 +137,22 @@ namespace DevTool.Translation
 
         private void LblClose_Click(object sender, EventArgs e)
         {
-            _wplayer?.close();
             this.Visible = false;
         }
 
         private void BtnCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(TxtOutlang.Text);
-            _wplayer?.close();
             this.Visible = false;
         }
 
         private void BtnSpeakSource_Click(object sender, EventArgs e)
         {
+            if (_flagSpeech)
+            {
+                return;
+            }
+
             SpeekText(
                 this.BtnSpeakSource,
                 TxtInlang.Text.Trim(), 
@@ -136,6 +162,11 @@ namespace DevTool.Translation
 
         private void BtnSpeakResult_Click(object sender, EventArgs e)
         {
+            if (_flagSpeech)
+            {
+                return;
+            }
+
             SpeekText(
                 this.BtnSpeakResult,
                 TxtOutlang.Text.Trim(), 
@@ -145,42 +176,43 @@ namespace DevTool.Translation
 
         private void BtnTranslate_Click(object sender, EventArgs e)
         {
-            TxtOutlang.Text = String.Empty;
-
-            if (string.IsNullOrEmpty(this.TxtInlang.Text.Trim()))
+            if (_flagTran || string.IsNullOrEmpty(this.TxtInlang.Text.Trim()))
             {
                 return;
             }
 
+            _flagTran = true;
+
+            TxtOutlang.Text = String.Empty;
+
             _translator.Translate(this.TxtInlang.Text.Trim(), _translator.SourceLanguage, _translator.TranslationLanguage);
 
-            if (_translator.Error == null)
+            if (string.IsNullOrEmpty(_translator.TranslationResultText))
             {
-                if (string.IsNullOrEmpty(_translator.TranslationResultText))
+                // Redirect to online link
+                if (MessageBox.Show(
+                        Resources.ERR001,
+                        Resources.TitleError,
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Error
+                    ) == DialogResult.Yes)
                 {
-                    // Redirect to online link
-                    if (MessageBox.Show(
-                            Resources.ERR001,
-                            Resources.TitleError,
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Error
-                        ) == DialogResult.Yes)
-                    {
-                        System.Diagnostics.Process.Start(_translator.TranslationhUrl);
-                    }
-                }
-                else
-                {
-                    // Copy if setting = true
-                    if (DevTool.Properties.Settings.Default.CopyClipBoard)
-                    {
-                        Clipboard.SetText(_translator.TranslationResultText);
-                    }
-
-                    TxtOutlang.Text = _translator.TranslationResultText;
-                    LblTranslationTime.Text = String.Format(Resources.TranslationTime, Math.Round(_translator.TranslationTime.TotalSeconds,2));
+                    System.Diagnostics.Process.Start(_translator.TranslationhUrl);
                 }
             }
+            else
+            {
+                // Copy if setting = true
+                if (DevTool.Properties.Settings.Default.CopyClipBoard)
+                {
+                    Clipboard.SetText(_translator.TranslationResultText);
+                }
+
+                TxtOutlang.Text = _translator.TranslationResultText;
+                LblTranslationTime.Text = String.Format(Resources.TranslationTime, Math.Round(_translator.TranslationTime.TotalSeconds, 2));
+            }
+
+            _flagTran = false;
         }
 
         /// <summary>

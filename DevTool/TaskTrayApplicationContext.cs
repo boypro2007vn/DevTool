@@ -10,17 +10,13 @@ namespace DevTool
     {
         #region Private Variable
 
-        private NotifyIcon _notifyIcon;
         private FrmSetting _configWindow;
-
-        #region Function Setting
+        private NotifyIcon _notifyIcon;
 
         /// <summary>
         /// Flag setting of translator
         /// </summary>
         private bool _tranEnable;
-
-        #endregion
 
         #endregion
 
@@ -43,9 +39,7 @@ namespace DevTool
         /// </summary>
         private void InitControl()
         {
-            //_httpClient = new HttpClient();
             _notifyIcon = new NotifyIcon();
-            _configWindow = new FrmSetting();
 
             // Add Item on muney right-click app
             MenuItem configMenuItem = new MenuItem("Config", ShowConfig);
@@ -99,6 +93,10 @@ namespace DevTool
 
         private void ShowConfig(object sender, EventArgs e)
         {
+            if (_configWindow == null)
+            {
+                _configWindow = new FrmSetting();
+            }
             // If we are already showing the window meerly focus it.
             if (_configWindow.Visible)
             {
@@ -117,10 +115,7 @@ namespace DevTool
 
         private void Exit(object sender, EventArgs e)
         {
-            // We must manually tidy up and remove the icon before we exit.
-            // Otherwise it will be left behind until the user mouses over.
-            _configWindow.Visible = false;
-
+            _notifyIcon.Icon = null;
             Application.Exit();
         }
 

@@ -108,6 +108,7 @@
             this.TxtALONTOP.Name = "TxtALONTOP";
             this.TxtALONTOP.Size = new System.Drawing.Size(37, 21);
             this.TxtALONTOP.TabIndex = 3;
+            this.TxtALONTOP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtALONTOP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtALONTOP_KeyDown);
             // 
             // ChkALONTOPAlt
@@ -147,6 +148,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmHome";
             this.Size = new System.Drawing.Size(779, 526);
+            this.Load += new System.EventHandler(this.FrmHome_Load);
             this.PnlD0.ResumeLayout(false);
             this.PnlD0.PerformLayout();
             this.ResumeLayout(false);

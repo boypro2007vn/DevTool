@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DevTool.Services
 {
-    public class WindowActivity
+    public class WindowApi
     {
         #region Public Const Variable
 
@@ -122,5 +122,15 @@ namespace DevTool.Services
         /// <returns></returns>
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         internal static extern int SendMessage(IntPtr hWnd, uint msg, out int wParam, out int lParam);
+
+        /// <summary>
+        /// Send key
+        /// </summary>
+        /// <param name="bVk"></param>
+        /// <param name="bScan"></param>
+        /// <param name="dwFlags"></param>
+        /// <param name="dwExtraInfo"></param>
+        [DllImport("user32.dll", EntryPoint = "SendKey")]
+        internal static extern void KeybdEvent(byte bVk, byte bScan, uint dwFlags, uint dwExtraInfo);
     }
 }

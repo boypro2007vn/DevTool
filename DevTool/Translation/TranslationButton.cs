@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Forms;
+using DevTool.Common;
 using DevTool.Model;
 using DevTool.Properties;
-using DevTool.Services;
 using Gma.System.MouseKeyHook;
 
 namespace DevTool.Translation
@@ -14,9 +15,8 @@ namespace DevTool.Translation
         private IKeyboardMouseEvents _jKeyboardMouseEvents;
         private Translator _translator;
         private TranslationResult _frmResult;
-        private string _inputLang;
-        private string _outputLang;
-        private bool _copyToClipboard;
+        private bool _flagCheckTranslate;
+        private string _clipboardData;
 
         #endregion
 
@@ -38,66 +38,87 @@ namespace DevTool.Translation
             {
                 InitKeyboardMouseEvent();
             }
-
         }
 
         private void InitKeyboardMouseEvent()
         {
             _jKeyboardMouseEvents = Hook.GlobalEvents();
 
-            _jKeyboardMouseEvents.KeyUp += KeyUp;
-            _jKeyboardMouseEvents.MouseClick += MouseClick;
+            //Mouse event
+            _jKeyboardMouseEvents.MouseDragFinished += MouseTranslateEvent;
+            _jKeyboardMouseEvents.MouseDoubleClick += MouseTranslateEvent;
         }
 
         #endregion
-
-        #region Event
 
         #region MouseEvent
 
-        private new void MouseClick(object sender, MouseEventArgs e)
+        private void MouseTranslateEvent(object sender, MouseEventArgs e)
         {
-            // Get current window
-            int activeWinPtr = WindowActivity.GetForegroundWindow().ToInt32();
-            int processId = 0;
-
-            // Get active window processid
-            int activeThreadId = WindowActivity.GetWindowThreadProcessId(activeWinPtr, out processId);
-            // Get current window processid
-            int currentThreadId = WindowActivity.GetCurrentThreadId();
-            if (activeThreadId != currentThreadId)
+            if (_flagCheckTranslate)
             {
-                this.Visible = false;
+                return;
             }
-        }
 
-        #endregion
-        #region KeyboardEvent
+            ReadOnlyCollection<ClipboardData> listClipboardData = null;
 
-        private new void KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.C)
+            try
             {
-                if (!string.IsNullOrEmpty(Clipboard.GetText().Trim()))
+                _flagCheckTranslate = true;
+
+                // Get current clipboard data
+                listClipboardData = ClipboardHelper.GetClipboard();
+
+                // Clear previous clipboard
+                Clipboard.Clear();
+
+                // Copy the target
+                SendKeys.SendWait("^c");
+
+                // Get new clipboard data
+                ReadOnlyCollection<ClipboardData> listClipboardDataNew = ClipboardHelper.GetClipboard();
+
+                foreach (ClipboardData data in listClipboardDataNew)
                 {
-                    ShowTranslationButton();
+                    if (data.Format == 1 || data.Format == 7)
+                    {
+                        _clipboardData = System.Text.Encoding.UTF8.GetString(data.Buffer, 0, data.Buffer.Length - 1).Trim();
+                        if (!string.IsNullOrEmpty(_clipboardData))
+                        {
+                            ShowTranslationButton();
+                        }
+                        break;
+                    }
                 }
             }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+            finally
+            {
+                if (listClipboardData != null)
+                {
+                    ClipboardHelper.SetClipboard(listClipboardData);
+                }
+                _flagCheckTranslate = false;
+            }
         }
-
-        #endregion
 
         private void DestroyKeyboardMouseEvent()
         {
-            _jKeyboardMouseEvents.KeyUp -= KeyUp;
-            _jKeyboardMouseEvents.MouseClick -= MouseClick;
+            _jKeyboardMouseEvents.MouseDoubleClick -= MouseTranslateEvent;
+            _jKeyboardMouseEvents.MouseDragFinished -= MouseTranslateEvent;
             _jKeyboardMouseEvents.Dispose();
         }
 
         #endregion
 
         #region Function
-
+       
+        /// <summary>
+        /// Show button for translate
+        /// </summary>
         private void ShowTranslationButton()
         {
             this.SetDesktopLocation(Cursor.Position.X - 15, Cursor.Position.Y + 15);
@@ -105,9 +126,13 @@ namespace DevTool.Translation
             this.TopMost = true;
         }
 
-        private void BtnTran_Click(object sender, EventArgs e)
+        private void GetResultTranslate()
         {
-            this.Visible = false;
+            if (string.IsNullOrEmpty(_clipboardData))
+            {
+                return;
+            }
+
             try
             {
                 // Initialize the translator
@@ -116,52 +141,41 @@ namespace DevTool.Translation
                     _translator = new Translator();
                 }
 
-                this.Cursor = Cursors.WaitCursor;
+                string inputLang = Properties.Settings.Default.InputLang;
+                string outputLang = Properties.Settings.Default.OutputLang;
+                bool copyToClipboard = Properties.Settings.Default.CopyClipBoard;
 
-                _inputLang = Properties.Settings.Default.InputLang;
-                _outputLang = Properties.Settings.Default.OutputLang;
-                _copyToClipboard = Properties.Settings.Default.CopyClipBoard;
+                _translator.Translate(_clipboardData, inputLang, outputLang);
 
-                string inputText = Clipboard.GetText().Trim();
-                _translator.Translate(inputText, _inputLang, _outputLang);
-
-                if (_translator.Error == null)
+                if (string.IsNullOrEmpty(_translator.TranslationResultText))
                 {
-                    if (string.IsNullOrEmpty(_translator.TranslationResultText))
+                    if (MessageBox.Show(
+                            Resources.ERR001,
+                            Resources.TitleError,
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Error
+                        ) == DialogResult.Yes)
                     {
-                        if (MessageBox.Show(
-                                Resources.ERR001,
-                                Resources.TitleError,
-                                MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Error
-                            ) == DialogResult.Yes)
-                        {
-                            System.Diagnostics.Process.Start(_translator.TranslationhUrl);
-                        }
-                    }
-                    else
-                    {
-                        // Copy if setting = true
-                        if (_copyToClipboard)
-                        {
-                            Clipboard.SetText(_translator.TranslationResultText);
-                        }
-
-                        if (_frmResult == null)
-                        {
-                            _frmResult = new TranslationResult();
-                        }
-
-                        _frmResult.InitControll(_translator);
-                        _frmResult.Show();
-                        // Set the form to top window
-                        _frmResult.Focus();
+                        System.Diagnostics.Process.Start(_translator.TranslationhUrl);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(_translator.Error.Message, Resources.TitleError, MessageBoxButtons.OK,
-                        MessageBoxIcon.Exclamation);
+                    // Copy if setting = true
+                    if (copyToClipboard)
+                    {
+                        Clipboard.SetText(_translator.TranslationResultText);
+                    }
+
+                    if (_frmResult == null)
+                    {
+                        _frmResult = new TranslationResult();
+                    }
+
+                    _frmResult.InitControl(_translator);
+                    _frmResult.Show();
+                    // Set the form to top window
+                    _frmResult.Focus();
                 }
             }
             catch (Exception ex)
@@ -170,10 +184,21 @@ namespace DevTool.Translation
             }
             finally
             {
-                this.Cursor = Cursors.Default;
+                _clipboardData = string.Empty;
             }
+        }
+        private void BtnTran_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            GetResultTranslate();
         }
 
         #endregion
+
+        private void TranslationButton_Deactivate(object sender, EventArgs e)
+        {
+            this.TopMost = false;
+            this.Visible = false;
+        }
     }
 }

@@ -82,5 +82,17 @@ namespace DevTool.Properties {
                 this["Translator"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1&1&0&123")]
+        public string ALONTOPShortcut {
+            get {
+                return ((string)(this["ALONTOPShortcut"]));
+            }
+            set {
+                this["ALONTOPShortcut"] = value;
+            }
+        }
     }
 }

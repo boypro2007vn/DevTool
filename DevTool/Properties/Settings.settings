@@ -17,5 +17,8 @@
     <Setting Name="Translator" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="ALONTOPShortcut" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1&amp;1&amp;0&amp;123</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
