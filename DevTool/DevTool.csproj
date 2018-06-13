@@ -88,9 +88,9 @@
     <Compile Include="Model\Translator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ClipboardAPI.cs" />
-    <Compile Include="Services\MemoryAPI.cs" />
-    <Compile Include="Services\WindowAPI.cs" />
+    <Compile Include="Services\ClipboardApi.cs" />
+    <Compile Include="Services\MemoryApi.cs" />
+    <Compile Include="Services\WindowApi.cs" />
     <Compile Include="Settings\FrmHome.cs">
       <SubType>UserControl</SubType>
     </Compile>

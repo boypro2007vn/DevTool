@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using DevTool.Common;
 using DevTool.Model;
 using DevTool.Properties;
+using DevTool.Services;
 using Gma.System.MouseKeyHook;
 
 namespace DevTool.Translation
@@ -17,6 +20,7 @@ namespace DevTool.Translation
         private TranslationResult _frmResult;
         private bool _flagCheckTranslate;
         private string _clipboardData;
+        IntPtr _nextClipboardViewer;
 
         #endregion
 
@@ -36,20 +40,25 @@ namespace DevTool.Translation
 
             if (vActive)
             {
-                InitKeyboardMouseEvent();
+                InitFormEvent();
             }
         }
 
-        private void InitKeyboardMouseEvent()
+        private void InitFormEvent()
         {
             _jKeyboardMouseEvents = Hook.GlobalEvents();
 
             //Mouse event
             _jKeyboardMouseEvents.MouseDragFinished += MouseTranslateEvent;
             _jKeyboardMouseEvents.MouseDoubleClick += MouseTranslateEvent;
+
+            // ClipboardEvent
+            _nextClipboardViewer = (IntPtr)ClipboardApi.SetClipboardViewer((int)this.Handle);
         }
 
         #endregion
+
+        #region Event
 
         #region MouseEvent
 
@@ -66,30 +75,11 @@ namespace DevTool.Translation
             {
                 _flagCheckTranslate = true;
 
-                // Get current clipboard data
+                // Get current clipboard data to backup
                 listClipboardData = ClipboardHelper.GetClipboard();
-
-                // Clear previous clipboard
-                Clipboard.Clear();
 
                 // Copy the target
                 SendKeys.SendWait("^c");
-
-                // Get new clipboard data
-                ReadOnlyCollection<ClipboardData> listClipboardDataNew = ClipboardHelper.GetClipboard();
-
-                foreach (ClipboardData data in listClipboardDataNew)
-                {
-                    if (data.Format == 1 || data.Format == 7)
-                    {
-                        _clipboardData = System.Text.Encoding.UTF8.GetString(data.Buffer, 0, data.Buffer.Length - 1).Trim();
-                        if (!string.IsNullOrEmpty(_clipboardData))
-                        {
-                            ShowTranslationButton();
-                        }
-                        break;
-                    }
-                }
             }
             catch (Exception exception)
             {
@@ -97,16 +87,26 @@ namespace DevTool.Translation
             }
             finally
             {
+                _flagCheckTranslate = false;
                 if (listClipboardData != null)
                 {
+                    // Rollback clipboard
                     ClipboardHelper.SetClipboard(listClipboardData);
                 }
-                _flagCheckTranslate = false;
             }
         }
 
+        /// <summary>
+        /// Destroy all mouse event
+        /// </summary>
         private void DestroyKeyboardMouseEvent()
         {
+            if (_nextClipboardViewer != null)
+            {
+                // Set clipboard event to default
+                ClipboardApi.ChangeClipboardChain(this.Handle, _nextClipboardViewer);
+            }
+                
             _jKeyboardMouseEvents.MouseDoubleClick -= MouseTranslateEvent;
             _jKeyboardMouseEvents.MouseDragFinished -= MouseTranslateEvent;
             _jKeyboardMouseEvents.Dispose();
@@ -114,8 +114,68 @@ namespace DevTool.Translation
 
         #endregion
 
+        #region Clipboard event
+
+        /// <summary>
+        /// Override clipboard changed event
+        /// </summary>
+        /// <param name="m"></param>
+        protected override void WndProc(ref Message m)
+        {
+            // defined in winuser.h
+            const int wmDrawclipboard = 0x308;
+            const int wmChangecbchain = 0x030D;
+
+            try
+            {
+                switch (m.Msg)
+                {
+                    case wmDrawclipboard:
+                        IDataObject iData = Clipboard.GetDataObject();
+                        Object oData = null;
+                        if (iData != null)
+                        {
+                            oData = iData.GetData(DataFormats.UnicodeText);
+                        }
+
+                        _clipboardData = String.Empty;
+                        if (oData != null)
+                        {
+                            _clipboardData = oData.ToString().Trim();
+                        }
+
+                        if (!string.IsNullOrEmpty(_clipboardData) && _flagCheckTranslate)
+                        {
+                            ShowTranslationButton();
+                        }
+
+                        break;
+
+                    case wmChangecbchain:
+                        if (m.WParam == _nextClipboardViewer)
+                            _nextClipboardViewer = m.LParam;
+                        else
+                            WindowApi.SendMessage(_nextClipboardViewer, m.Msg, m.WParam, m.LParam);
+                        break;
+
+                    default:
+                        base.WndProc(ref m);
+                        break;
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        #endregion
+
+        #endregion
+
         #region Function
-       
+
         /// <summary>
         /// Show button for translate
         /// </summary>
@@ -123,7 +183,8 @@ namespace DevTool.Translation
         {
             this.SetDesktopLocation(Cursor.Position.X - 15, Cursor.Position.Y + 15);
             this.Visible = true;
-            this.TopMost = true;
+            this.Focus();
+            WindowApi.SetForegroundWindow(this.Handle);
         }
 
         private void GetResultTranslate()
@@ -197,7 +258,11 @@ namespace DevTool.Translation
 
         private void TranslationButton_Deactivate(object sender, EventArgs e)
         {
-            this.TopMost = false;
+            this.Visible = false;
+        }
+
+        private void Form_LostFocus(object sender, EventArgs e)
+        {
             this.Visible = false;
         }
     }

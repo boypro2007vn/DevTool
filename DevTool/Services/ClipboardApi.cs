@@ -29,5 +29,11 @@ namespace DevTool.Services
 
         [DllImport("user32.dll", SetLastError = true)]
         public static extern uint RegisterClipboardFormat(string lpszFormat);
+
+        [DllImport("User32.dll")]
+        public static extern int SetClipboardViewer(int hWndNewViewer);
+
+        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        public static extern bool ChangeClipboardChain(IntPtr hWndRemove, IntPtr hWndNewNext);
     }
 }

@@ -65,6 +65,7 @@ namespace DevTool.Translation
             this.Deactivate += new System.EventHandler(this.TranslationButton_Deactivate);
             ((System.ComponentModel.ISupportInitialize)(this.BtnTrans)).EndInit();
             this.ResumeLayout(false);
+            this.LostFocus += new System.EventHandler(this.Form_LostFocus);
 
         }
 

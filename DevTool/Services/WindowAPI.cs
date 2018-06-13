@@ -124,13 +124,24 @@ namespace DevTool.Services
         internal static extern int SendMessage(IntPtr hWnd, uint msg, out int wParam, out int lParam);
 
         /// <summary>
+        /// Send message
+        /// </summary>
+        /// <param name="hwnd"></param>
+        /// <param name="wMsg"></param>
+        /// <param name="wParam"></param>
+        /// <param name="lParam"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern int SendMessage(IntPtr hwnd, int wMsg, IntPtr wParam, IntPtr lParam);
+        
+        /// <summary>
         /// Send key
         /// </summary>
         /// <param name="bVk"></param>
         /// <param name="bScan"></param>
         /// <param name="dwFlags"></param>
         /// <param name="dwExtraInfo"></param>
-        [DllImport("user32.dll", EntryPoint = "SendKey")]
-        internal static extern void KeybdEvent(byte bVk, byte bScan, uint dwFlags, uint dwExtraInfo);
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, uint dwExtraInfo);
     }
 }
