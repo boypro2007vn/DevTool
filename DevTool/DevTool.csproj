@@ -75,9 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ClipboardHelper.cs" />
-    <Compile Include="Common\FormCommon.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Common\FormCommon.cs" />
     <Compile Include="CustomControl\CustomPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -102,6 +100,12 @@
     </Compile>
     <Compile Include="Settings\FrmSetting.Designer.cs">
       <DependentUpon>FrmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\FrmTranslate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Settings\FrmTranslate.Designer.cs">
+      <DependentUpon>FrmTranslate.cs</DependentUpon>
     </Compile>
     <Compile Include="TaskTrayApplicationContext.cs" />
     <Compile Include="Translation\TranslationButton.cs">
@@ -131,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings\FrmSetting.resx">
       <DependentUpon>FrmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\FrmTranslate.resx">
+      <DependentUpon>FrmTranslate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Translation\TranslationButton.resx">
       <DependentUpon>TranslationButton.cs</DependentUpon>

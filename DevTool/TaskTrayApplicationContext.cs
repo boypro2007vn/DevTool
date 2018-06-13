@@ -84,7 +84,7 @@ namespace DevTool
         /// </summary>
         private void InitConfig()
         {
-            _tranEnable = Properties.Settings.Default.Translator;
+            _tranEnable = Properties.Settings.Default.TranslatorEnable;
         }
 
         #endregion

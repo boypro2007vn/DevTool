@@ -1,8 +1,14 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
+using DevTool.Services;
 
 namespace DevTool.Common
 {
-    public class FormCommon : Form
+    public class FormCommon
     {
         /// <summary>
         /// Target Form
@@ -20,6 +26,10 @@ namespace DevTool.Common
         /// Coordinates Y of form
         /// </summary>
         private int _moveFormY;
+
+        private static KeysConverter _kc;
+
+        private static ToolTip _toolTip;
 
         /// <summary>
         /// Move the form without border
@@ -42,7 +52,7 @@ namespace DevTool.Common
         {
             if (_flagFormMove)
             {
-                _form.SetDesktopLocation(MousePosition.X - _moveFormX, MousePosition.Y - _moveFormY);
+                _form.SetDesktopLocation(Cursor.Position.X - _moveFormX, Cursor.Position.Y - _moveFormY);
             }
         }
 
@@ -66,6 +76,117 @@ namespace DevTool.Common
             _flagFormMove = true;
             _moveFormX = e.X;
             _moveFormY = e.Y;
+        }
+
+        public static string ConvertKeyToString(Keys vKey)
+        {
+            if (vKey >= Keys.F1 && vKey <= Keys.F12)
+            {
+                if (_kc == null)
+                {
+                    _kc = new KeysConverter();
+                }
+                return _kc.ConvertToString(vKey);
+            }
+
+            byte[] keyboardState = new byte[255];
+            bool keyboardStateStatus = WindowApi.GetKeyboardState(keyboardState);
+
+            if (!keyboardStateStatus)
+            {
+                return "";
+            }
+
+            uint virtualKeyCode = (uint)vKey;
+            uint scanCode = WindowApi.MapVirtualKey(virtualKeyCode, 0);
+            IntPtr inputLocaleIdentifier = WindowApi.GetKeyboardLayout(0);
+
+            StringBuilder result = new StringBuilder();
+            WindowApi.ToUnicodeEx(virtualKeyCode, scanCode, keyboardState, result, (int)5, (uint)0, inputLocaleIdentifier);
+
+            return result.ToString().ToUpper();
+        }
+
+        /// <summary>
+        /// Show tooltip for target
+        /// </summary>
+        /// <param name="vMessage">Content ToolTip</param>
+        /// <param name="vTitle">Title header</param>
+        /// <param name="vTarget">Target Avtive</param>
+        /// <param name="vIcon">Icon ToolTip</param>
+        public static void ShowToolTip(string vMessage, string vTitle, Control vTarget, [Optional] ToolTipIcon vIcon)
+        {
+            // Create the ToolTip and associate with the Form container.
+            if (_toolTip == null)
+            {
+                _toolTip = new ToolTip();
+            }
+
+            // Set up the delays for the ToolTip.
+            _toolTip.ToolTipTitle = vTitle;
+            _toolTip.AutoPopDelay = 5000;
+            _toolTip.InitialDelay = 1000;
+            _toolTip.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            _toolTip.ShowAlways = true;
+
+            // Design tooltip
+            _toolTip.ToolTipIcon = vIcon;
+            _toolTip.UseFading = true;
+            _toolTip.UseAnimation = true;
+            _toolTip.BackColor = Color.FromArgb(29, 165, 104);
+            _toolTip.ForeColor = Color.White;
+
+            // Set up the ToolTip text for the control.
+            _toolTip.SetToolTip(vTarget, vMessage);
+        }
+
+
+        private static int[] dirmap = { 1, 5, 4, 6, 2, 10, 8, 9 };
+
+        [DllImport("user32.dll")]
+        private static extern bool AnimateWindow(IntPtr handle, int msec, int flags);
+
+        /// <summary>
+        /// Animation effect type
+        /// </summary>
+        public enum Effect { Roll, Slide, Center, Blend };
+
+        public static void Animate(Control vControl, Effect vEffects, int vSec, bool vActive)
+        {
+            switch (vEffects)
+            {
+                case Effect.Slide:
+                {
+                    int height = vControl.Height;
+                    if (vActive)
+                    {
+                        vControl.BringToFront();
+                        vControl.Location = new Point(0, 0 - height);
+                        vControl.Visible = true;
+                        for (int i = 0; i < height / 2; i++)
+                        {
+                            Thread.Sleep(vSec);
+                            vControl.Location = new Point(0, 0 - height + (i * 2));
+                        }
+                    }
+                    else
+                    {
+                        int flags = 0x40000;
+                        flags |= 0x10000;
+                        int angle = 270;
+                        if (vControl.TopLevelControl == vControl)
+                        {
+                            flags |= 0x20000;
+                        }
+                        flags |= dirmap[(angle % 360) / 45];
+                        AnimateWindow(vControl.Handle, vSec, flags);
+                        vControl.Visible = false;
+                    }
+                    break;
+                }
+            }
+           
         }
     }
 }

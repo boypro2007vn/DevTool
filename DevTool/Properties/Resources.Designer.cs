@@ -122,18 +122,27 @@ namespace DevTool.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find the translation for this text. Try it on the website?.
         /// </summary>
-        internal static string ERR001 {
+        internal static string Err001 {
             get {
-                return ResourceManager.GetString("ERR001", resourceCulture);
+                return ResourceManager.GetString("Err001", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot get settings. Restore default settings.
+        ///   Looks up a localized string similar to Cannot get settings. Restore default settings..
         /// </summary>
         internal static string Error001 {
             get {
                 return ResourceManager.GetString("Error001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot save setting. Something wrong!.
+        /// </summary>
+        internal static string Error002 {
+            get {
+                return ResourceManager.GetString("Error002", resourceCulture);
             }
         }
         
@@ -188,11 +197,11 @@ namespace DevTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save settings success!.
+        ///   Looks up a localized string similar to Settings saved successfully..
         /// </summary>
-        internal static string MSG001 {
+        internal static string Msg001 {
             get {
-                return ResourceManager.GetString("MSG001", resourceCulture);
+                return ResourceManager.GetString("Msg001", resourceCulture);
             }
         }
         
@@ -253,7 +262,7 @@ namespace DevTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Translated in {0} seconds.
+        ///   Looks up a localized string similar to Translated in {0} seconds..
         /// </summary>
         internal static string TranslationTime {
             get {
@@ -289,7 +298,7 @@ namespace DevTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A program running on this computer.
+        ///   Looks up a localized string similar to A program running on this computer..
         /// </summary>
         internal static string WAN001 {
             get {

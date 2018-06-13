@@ -17,3 +17,4 @@ C:\Users\namin\source\repos\DevTool\DevTool\bin\Debug\Newtonsoft.Json.dll
 C:\Users\namin\source\repos\DevTool\DevTool\bin\Debug\Newtonsoft.Json.xml
 C:\Users\namin\source\repos\DevTool\DevTool\obj\Debug\DevTool.Settings.FrmHome.resources
 C:\Users\namin\source\repos\DevTool\DevTool\obj\Debug\DevTool.csprojAssemblyReference.cache
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Debug\DevTool.Settings.FrmTranslate.resources

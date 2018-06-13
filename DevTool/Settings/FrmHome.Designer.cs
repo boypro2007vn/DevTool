@@ -32,7 +32,7 @@
             this.BtnGeneralSettingsHelp = new System.Windows.Forms.Button();
             this.LblAlwayOnTop = new System.Windows.Forms.Label();
             this.ChkALONTOPCtrl = new System.Windows.Forms.CheckBox();
-            this.PnlD0 = new System.Windows.Forms.Panel();
+            this.PnlD0 = new DevTool.CustomControl.CustomPanel();
             this.TxtALONTOP = new System.Windows.Forms.TextBox();
             this.ChkALONTOPAlt = new System.Windows.Forms.CheckBox();
             this.ChkALONTOPShift = new System.Windows.Forms.CheckBox();
@@ -88,6 +88,7 @@
             // 
             // PnlD0
             // 
+            this.PnlD0.BorderColor = System.Drawing.Color.Transparent;
             this.PnlD0.Controls.Add(this.TxtALONTOP);
             this.PnlD0.Controls.Add(this.ChkALONTOPAlt);
             this.PnlD0.Controls.Add(this.ChkALONTOPShift);
@@ -162,9 +163,9 @@
         private System.Windows.Forms.Button BtnGeneralSettingsHelp;
         private System.Windows.Forms.Label LblAlwayOnTop;
         private System.Windows.Forms.CheckBox ChkALONTOPCtrl;
-        private System.Windows.Forms.Panel PnlD0;
         private System.Windows.Forms.CheckBox ChkALONTOPAlt;
         private System.Windows.Forms.CheckBox ChkALONTOPShift;
         private System.Windows.Forms.TextBox TxtALONTOP;
+        private CustomControl.CustomPanel PnlD0;
     }
 }

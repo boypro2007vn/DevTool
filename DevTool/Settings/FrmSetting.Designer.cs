@@ -36,14 +36,15 @@
             this.BtnMinimize = new System.Windows.Forms.Button();
             this.BtnClose = new System.Windows.Forms.Button();
             this.PnlTabBar = new DevTool.CustomControl.CustomPanel();
+            this.BtnHome = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.BtnTran = new System.Windows.Forms.Button();
-            this.FrmSettings = new DevTool.Settings.FrmHome();
             this.PnlForm = new DevTool.CustomControl.CustomPanel();
-            this.BtnHome = new System.Windows.Forms.Button();
+            this.PnlContent = new System.Windows.Forms.Panel();
             this.PnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
             this.PnlTabBar.SuspendLayout();
+            this.PnlForm.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlHeader
@@ -134,6 +135,25 @@
             this.PnlTabBar.Size = new System.Drawing.Size(151, 522);
             this.PnlTabBar.TabIndex = 1;
             // 
+            // BtnHome
+            // 
+            this.BtnHome.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
+            this.BtnHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
+            this.BtnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnHome.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnHome.ForeColor = System.Drawing.Color.White;
+            this.BtnHome.Image = global::DevTool.Properties.Resources.home_icon;
+            this.BtnHome.Location = new System.Drawing.Point(0, 0);
+            this.BtnHome.Name = "BtnHome";
+            this.BtnHome.Size = new System.Drawing.Size(151, 105);
+            this.BtnHome.TabIndex = 0;
+            this.BtnHome.TabStop = false;
+            this.BtnHome.Text = "Home";
+            this.BtnHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BtnHome.UseVisualStyleBackColor = true;
+            this.BtnHome.Click += new System.EventHandler(this.BtnHome_Click);
+            // 
             // button2
             // 
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
@@ -148,7 +168,7 @@
             this.button2.Size = new System.Drawing.Size(151, 105);
             this.button2.TabIndex = 2;
             this.button2.TabStop = false;
-            this.button2.Text = "Home";
+            this.button2.Text = "Other";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button2.UseVisualStyleBackColor = true;
@@ -170,40 +190,23 @@
             this.BtnTran.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnTran.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BtnTran.UseVisualStyleBackColor = true;
-            // 
-            // FrmSettings
-            // 
-            this.FrmSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
-            this.FrmSettings.Location = new System.Drawing.Point(164, 66);
-            this.FrmSettings.Name = "FrmSettings";
-            this.FrmSettings.Size = new System.Drawing.Size(779, 495);
-            this.FrmSettings.TabIndex = 0;
+            this.BtnTran.Click += new System.EventHandler(this.BtnTran_Click);
             // 
             // PnlForm
             // 
             this.PnlForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
+            this.PnlForm.Controls.Add(this.PnlContent);
             this.PnlForm.Location = new System.Drawing.Point(0, 0);
             this.PnlForm.Name = "PnlForm";
             this.PnlForm.Size = new System.Drawing.Size(957, 575);
             this.PnlForm.TabIndex = 3;
             // 
-            // BtnHome
+            // PnlContent
             // 
-            this.BtnHome.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
-            this.BtnHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
-            this.BtnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnHome.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnHome.ForeColor = System.Drawing.Color.White;
-            this.BtnHome.Image = global::DevTool.Properties.Resources.home_icon;
-            this.BtnHome.Location = new System.Drawing.Point(0, 0);
-            this.BtnHome.Name = "BtnHome";
-            this.BtnHome.Size = new System.Drawing.Size(151, 105);
-            this.BtnHome.TabIndex = 0;
-            this.BtnHome.TabStop = false;
-            this.BtnHome.Text = "Home";
-            this.BtnHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.BtnHome.UseVisualStyleBackColor = true;
+            this.PnlContent.Location = new System.Drawing.Point(157, 53);
+            this.PnlContent.Name = "PnlContent";
+            this.PnlContent.Size = new System.Drawing.Size(797, 508);
+            this.PnlContent.TabIndex = 0;
             // 
             // FrmSetting
             // 
@@ -211,7 +214,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
             this.ClientSize = new System.Drawing.Size(957, 575);
-            this.Controls.Add(this.FrmSettings);
             this.Controls.Add(this.PnlTabBar);
             this.Controls.Add(this.PnlHeader);
             this.Controls.Add(this.PnlForm);
@@ -226,6 +228,7 @@
             this.PnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).EndInit();
             this.PnlTabBar.ResumeLayout(false);
+            this.PnlForm.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -239,10 +242,10 @@
         private System.Windows.Forms.Button BtnClose;
         private System.Windows.Forms.Button BtnHelp;
         private System.Windows.Forms.Button BtnMinimize;
-        private FrmHome FrmSettings;
         private System.Windows.Forms.PictureBox PicLogo;
         private System.Windows.Forms.Label Lbl010;
         private CustomControl.CustomPanel PnlForm;
         private System.Windows.Forms.Button BtnHome;
+        private System.Windows.Forms.Panel PnlContent;
     }
 }

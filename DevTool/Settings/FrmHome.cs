@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevTool.Common;
 using DevTool.Properties;
 
 namespace DevTool.Settings
 {
     public partial class FrmHome : UserControl
     {
-        private KeysConverter _kc;
+        
         public FrmHome()
         {
             InitializeComponent();
@@ -21,12 +15,10 @@ namespace DevTool.Settings
 
         private void FrmHome_Load(object sender, EventArgs e)
         {
-            _kc = new KeysConverter();
-
-            LoadSetting();
+            LoadSettings();
         }
 
-        private void LoadSetting()
+        private void LoadSettings()
         {
             try
             {
@@ -34,7 +26,7 @@ namespace DevTool.Settings
                 this.ChkALONTOPCtrl.Checked = settings[0].Trim().Equals("1");
                 this.ChkALONTOPShift.Checked = settings[1].Trim().Equals("1");
                 this.ChkALONTOPAlt.Checked = settings[2].Trim().Equals("1");
-                this.TxtALONTOP.Text = _kc.ConvertToString(Int32.Parse(settings[3]));
+                this.TxtALONTOP.Text = FormCommon.ConvertKeyToString((Keys)Int32.Parse(settings[3]));
             }
             catch (Exception e)
             {
@@ -56,7 +48,7 @@ namespace DevTool.Settings
                 (e.KeyCode >= Keys.OemSemicolon && e.KeyCode <= Keys.OemQuotes))
             {
                 e.SuppressKeyPress = true;
-                this.TxtALONTOP.Text = _kc.ConvertToString(e.KeyCode);
+                this.TxtALONTOP.Text = FormCommon.ConvertKeyToString(e.KeyCode);
                 this.TxtALONTOP.Tag = e.KeyCode;
             }
             else

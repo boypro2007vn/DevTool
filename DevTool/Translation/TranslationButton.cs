@@ -211,7 +211,7 @@ namespace DevTool.Translation
                 if (string.IsNullOrEmpty(_translator.TranslationResultText))
                 {
                     if (MessageBox.Show(
-                            Resources.ERR001,
+                            Resources.Err001,
                             Resources.TitleError,
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Error

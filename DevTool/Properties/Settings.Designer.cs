@@ -25,7 +25,7 @@ namespace DevTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("auto")]
+        [global::System.Configuration.DefaultSettingValueAttribute("en")]
         public string InputLang {
             get {
                 return ((string)(this["InputLang"]));
@@ -37,7 +37,7 @@ namespace DevTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("en")]
+        [global::System.Configuration.DefaultSettingValueAttribute("vi")]
         public string OutputLang {
             get {
                 return ((string)(this["OutputLang"]));
@@ -74,12 +74,12 @@ namespace DevTool.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Translator {
+        public bool TranslatorEnable {
             get {
-                return ((bool)(this["Translator"]));
+                return ((bool)(this["TranslatorEnable"]));
             }
             set {
-                this["Translator"] = value;
+                this["TranslatorEnable"] = value;
             }
         }
         

@@ -12,69 +12,20 @@ namespace DevTool.Settings
         #region PrivateVariable
 
         private Dictionary<string, string> _cboLanguage;
+        private FrmTranslate _formTranslate;
+        private FrmHome _formHome;
 
         #endregion
         public FrmSetting()
         {
             InitializeComponent();
-
-            
         }
         
         private void FrmSetting_Load(object sender, EventArgs e)
         {
-            InitCombobox();
-            LoadSetting();
-
+            this.BtnHome.PerformClick();
             // Move form without border
             new FormCommon().MoveForm(this.PnlHeader, this);
-        }
-
-        private void LoadSetting()
-        {
-            // CboInLang.SelectedValue = Properties.Settings.Default.InputLang;
-            // CboOutLang.SelectedValue = Properties.Settings.Default.OutputLang;
-            // ChkCopyClipBoard.Checked = Properties.Settings.Default.CopyClipBoard;
-        }
-        #region ComboboxEvent
-
-        private void InitCombobox()
-        {
-            try { 
-                _cboLanguage = Translator.Languages;
-
-                // Set value for combobox
-                // SetCombobox(CboInLang);
-                // SetCombobox(CboOutLang);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-        /// <summary>
-        /// Set key and value for combobox
-        /// </summary>
-        /// <param name="vComboBox"></param>
-        private void SetCombobox(ComboBox vComboBox)
-        {
-            vComboBox.DataSource = new BindingSource(_cboLanguage, null);
-            vComboBox.DisplayMember = "Value";
-            vComboBox.ValueMember = "Key";
-        }
-
-        #endregion
-
-        private void BtnOk_Click(object sender, EventArgs e)
-        {
-            //DevTool.Properties.Settings.Default.InputLang = CboInLang.SelectedValue.ToString();
-            //DevTool.Properties.Settings.Default.OutputLang = CboOutLang.SelectedValue.ToString();
-            //DevTool.Properties.Settings.Default.CopyClipBoard = ChkCopyClipBoard.Checked;
-            DevTool.Properties.Settings.Default.Save();
-
-            MessageBox.Show(Resources.MSG001, Resources.TitleComfirm, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -85,6 +36,26 @@ namespace DevTool.Settings
         private void BtnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void BtnHome_Click(object sender, EventArgs e)
+        {
+            if (_formHome == null)
+            {
+                _formHome = new FrmHome();
+            }
+            this.PnlContent.Controls.Clear();
+            this.PnlContent.Controls.Add(_formHome);
+        }
+
+        private void BtnTran_Click(object sender, EventArgs e)
+        {
+            if (_formTranslate == null)
+            {
+                _formTranslate = new FrmTranslate();
+            }
+            this.PnlContent.Controls.Clear();
+            this.PnlContent.Controls.Add(_formTranslate);
         }
     }
 }

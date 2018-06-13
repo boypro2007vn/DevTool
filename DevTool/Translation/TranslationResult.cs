@@ -191,7 +191,7 @@ namespace DevTool.Translation
             {
                 // Redirect to online link
                 if (MessageBox.Show(
-                        Resources.ERR001,
+                        Resources.Err001,
                         Resources.TitleError,
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Error
