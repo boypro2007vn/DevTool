@@ -1,4 +1,6 @@
-﻿namespace DevTool.Settings
+﻿using DevTool.CustomControl;
+
+namespace DevTool.Settings
 {
     partial class FrmTranslate
     {
@@ -265,7 +267,6 @@
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmTranslate";
             this.Size = new System.Drawing.Size(805, 508);
-            this.Load += new System.EventHandler(this.FrmTranslate_Load);
             this.PnlHelpDetail.ResumeLayout(false);
             this.PnlHelpDetail.PerformLayout();
             this.PnlD0.ResumeLayout(false);

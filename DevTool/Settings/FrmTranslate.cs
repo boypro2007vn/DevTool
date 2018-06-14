@@ -19,15 +19,11 @@ namespace DevTool.Settings
 {
     public partial class FrmTranslate : CustomSettings
     {
-        public FrmTranslate() : base()
+        public FrmTranslate()
         {
             InitializeComponent();
-        }
-
-        private void FrmTranslate_Load(object sender, EventArgs e)
-        {
             InitCombobox();
-            base.InitSettings(this.PnlHelpDetail,this.PnlD0,this.BtnTranslateSettingsHelp);
+            base.InitSettings(this.PnlHelpDetail, this.PnlD0, this.BtnTranslateSettingsHelp);
         }
 
         public override void LoadSettings()

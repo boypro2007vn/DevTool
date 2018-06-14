@@ -11,13 +11,9 @@ namespace DevTool.Settings
     {
         private RegistryKey _registryKey;
 
-        public FrmHome() : base()
+        public FrmHome()
         {
             InitializeComponent();
-        }
-
-        private void FrmHome_Load(object sender, EventArgs e)
-        {
             base.InitSettings(this.PnlHelpDetail, this.PnlD0, this.BtnGeneralSettingsHelp);
         }
 

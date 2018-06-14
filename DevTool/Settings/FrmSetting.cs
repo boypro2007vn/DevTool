@@ -46,10 +46,8 @@ namespace DevTool.Settings
             {
                 _formHome = new FrmHome();
             }
-            else
-            {
-                _formHome.ReloadSettings();
-            }
+
+            _formHome.ReloadSettings();
             this.PnlContent.Controls.Clear();
             this.PnlContent.Controls.Add(_formHome);
         }
@@ -61,10 +59,8 @@ namespace DevTool.Settings
             {
                 _formTranslate = new FrmTranslate();
             }
-            else
-            {
-                _formTranslate.ReloadSettings();
-            }
+
+            _formTranslate.ReloadSettings();
             this.PnlContent.Controls.Clear();
             this.PnlContent.Controls.Add(_formTranslate);
         }

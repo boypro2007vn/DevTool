@@ -277,7 +277,6 @@
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmHome";
             this.Size = new System.Drawing.Size(805, 508);
-            this.Load += new System.EventHandler(this.FrmHome_Load);
             this.PnlD0.ResumeLayout(false);
             this.PnlD0.PerformLayout();
             this.PnlHelpDetail.ResumeLayout(false);
