@@ -10,15 +10,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevTool.Common;
+using DevTool.CustomControl;
 using DevTool.Model;
 using DevTool.Properties;
 using Newtonsoft.Json.Linq;
 
 namespace DevTool.Settings
 {
-    public partial class FrmTranslate : UserControl
+    public partial class FrmTranslate : CustomSettings
     {
-        public FrmTranslate()
+        public FrmTranslate() : base()
         {
             InitializeComponent();
         }
@@ -26,10 +27,10 @@ namespace DevTool.Settings
         private void FrmTranslate_Load(object sender, EventArgs e)
         {
             InitCombobox();
-            LoadSettings();
+            base.InitSettings(this.PnlHelpDetail,this.PnlD0,this.BtnTranslateSettingsHelp);
         }
 
-        private void LoadSettings()
+        public override void LoadSettings()
         {
             try
             {
@@ -40,13 +41,14 @@ namespace DevTool.Settings
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 MessageBox.Show(Resources.Error001, Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                DefaultSetting();
+                DefaultSettings();
             }
 
         }
 
-        private void DefaultSetting()
+        public override void DefaultSettings()
         {
             this.ChkEnableTranslate.Checked = true;
             this.ChkCopyToClipboard.Checked = true;
@@ -80,26 +82,16 @@ namespace DevTool.Settings
                 Properties.Settings.Default.Save();
                 MessageBox.Show(Resources.Msg001, Resources.AppName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 MessageBox.Show(Resources.Msg001, Resources.Error002, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
         private void BtnDefault_Click(object sender, EventArgs e)
         {
-            DefaultSetting();
-            
-        }
-
-        private void BtnTranslateSettingsHelp_Click(object sender, EventArgs e)
-        {
-           FormCommon.Animate(this.PnlHelpDetail, FormCommon.Effect.Slide, 1, true);
-        }
-
-        private void PnlD0_Click(object sender, EventArgs e)
-        {
-            FormCommon.Animate(this.PnlHelpDetail, FormCommon.Effect.Slide, 200, false);
+            DefaultSettings();
         }
     }
 }

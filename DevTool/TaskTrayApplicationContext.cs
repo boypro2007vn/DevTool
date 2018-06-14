@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 using System.Windows.Forms;
 using DevTool.Settings;
 using DevTool.Translation;
@@ -30,6 +31,9 @@ namespace DevTool
         {
             InitControl();
             InitFunction();
+
+            // Handle application is exiting event.
+            Application.ApplicationExit += ApplicationExit;
         }
 
         #region ApplicationEvent
@@ -87,6 +91,33 @@ namespace DevTool
             _tranEnable = Properties.Settings.Default.TranslatorEnable;
         }
 
+        /// <summary>
+        /// Aplication exit event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ApplicationExit(object sender, EventArgs e)
+        {
+            string audioFile = Properties.Resources.SourceLanguageFileName;
+            try
+            {
+                if (File.Exists(audioFile))
+                {
+                    File.Delete(audioFile);
+                }
+
+                audioFile = Properties.Resources.TranslateLanguageFileName;
+
+                if (File.Exists(audioFile))
+                {
+                    File.Delete(audioFile);
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+        }
         #endregion
 
         #region TaskbarIconEvent

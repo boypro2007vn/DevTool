@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 
@@ -22,8 +24,10 @@ namespace DevTool.CustomControl
         {
             base.OnPaint(e);
             using (SolidBrush brush = new SolidBrush(BackColor))
-                e.Graphics.FillRectangle(brush, ClientRectangle);
-            e.Graphics.DrawRectangle(new Pen(_colorBorder), 0, 0, ClientSize.Width - 1, ClientSize.Height - 1);
+            {
+                e.Graphics.FillRectangle(brush, e.ClipRectangle);
+                e.Graphics.DrawRectangle(new Pen(_colorBorder), 0, 0, ClientSize.Width - 1, ClientSize.Height - 1);
+            }
         }
     }
 }

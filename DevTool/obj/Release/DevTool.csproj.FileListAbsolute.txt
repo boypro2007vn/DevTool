@@ -11,3 +11,10 @@ C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.csproj.CoreCompi
 C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.csproj.CopyComplete
 C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.exe
 C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.pdb
+C:\Users\namin\source\repos\DevTool\DevTool\bin\Release\Newtonsoft.Json.dll
+C:\Users\namin\source\repos\DevTool\DevTool\bin\Release\Newtonsoft.Json.xml
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\Interop.WMPLib.dll
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.csproj.ResolveComReference.cache
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.Settings.FrmHome.resources
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.Settings.FrmTranslate.resources
+C:\Users\namin\source\repos\DevTool\DevTool\obj\Release\DevTool.csprojAssemblyReference.cache

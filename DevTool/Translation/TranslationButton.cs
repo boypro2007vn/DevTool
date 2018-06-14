@@ -48,7 +48,10 @@ namespace DevTool.Translation
         {
             _jKeyboardMouseEvents = Hook.GlobalEvents();
 
-            //Mouse event
+            // Key event
+            _jKeyboardMouseEvents.KeyDown += TranslateKeyDown;
+
+            // Mouse event
             _jKeyboardMouseEvents.MouseDragFinished += MouseTranslateEvent;
             _jKeyboardMouseEvents.MouseDoubleClick += MouseTranslateEvent;
 
@@ -59,6 +62,15 @@ namespace DevTool.Translation
         #endregion
 
         #region Event
+
+        #region KeyboardEvent
+
+        private void TranslateKeyDown(object sender, KeyEventArgs e)
+        {
+            this.Visible = false;
+        }
+
+        #endregion
 
         #region MouseEvent
 
@@ -138,14 +150,15 @@ namespace DevTool.Translation
                             oData = iData.GetData(DataFormats.UnicodeText);
                         }
 
-                        _clipboardData = String.Empty;
+                        string textData = String.Empty;
                         if (oData != null)
                         {
-                            _clipboardData = oData.ToString().Trim();
+                            textData = oData.ToString().Trim();
                         }
 
-                        if (!string.IsNullOrEmpty(_clipboardData) && _flagCheckTranslate)
+                        if (!string.IsNullOrEmpty(textData) && _flagCheckTranslate)
                         {
+                            _clipboardData = textData;
                             ShowTranslationButton();
                         }
 

@@ -27,8 +27,6 @@ namespace DevTool.Common
         /// </summary>
         private int _moveFormY;
 
-        private static KeysConverter _kc;
-
         private static ToolTip _toolTip;
 
         /// <summary>
@@ -82,11 +80,7 @@ namespace DevTool.Common
         {
             if (vKey >= Keys.F1 && vKey <= Keys.F12)
             {
-                if (_kc == null)
-                {
-                    _kc = new KeysConverter();
-                }
-                return _kc.ConvertToString(vKey);
+                return vKey.ToString();
             }
 
             byte[] keyboardState = new byte[255];
@@ -152,37 +146,28 @@ namespace DevTool.Common
         /// </summary>
         public enum Effect { Roll, Slide, Center, Blend };
 
-        public static void Animate(Control vControl, Effect vEffects, int vSec, bool vActive)
+        public static void Animate(Control vControl, Effect vEffects, int vSec, int vAngle)
         {
             switch (vEffects)
             {
                 case Effect.Slide:
                 {
-                    int height = vControl.Height;
-                    if (vActive)
+                    int flags = 0x40000;
+                    if (vControl.Visible)
                     {
-                        vControl.BringToFront();
-                        vControl.Location = new Point(0, 0 - height);
-                        vControl.Visible = true;
-                        for (int i = 0; i < height / 2; i++)
-                        {
-                            Thread.Sleep(vSec);
-                            vControl.Location = new Point(0, 0 - height + (i * 2));
-                        }
+                        flags |= 0x10000;
+                        vAngle += 180;
                     }
                     else
                     {
-                        int flags = 0x40000;
-                        flags |= 0x10000;
-                        int angle = 270;
                         if (vControl.TopLevelControl == vControl)
                         {
                             flags |= 0x20000;
                         }
-                        flags |= dirmap[(angle % 360) / 45];
-                        AnimateWindow(vControl.Handle, vSec, flags);
-                        vControl.Visible = false;
                     }
+                    flags |= dirmap[(vAngle % 360) / 45];
+                    AnimateWindow(vControl.Handle, vSec, flags);
+                    vControl.Visible = !vControl.Visible;
                     break;
                 }
             }

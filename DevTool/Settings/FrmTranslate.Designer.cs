@@ -30,7 +30,11 @@
         {
             this.BtnTranslateSettingsHelp = new System.Windows.Forms.Button();
             this.LblTranslateSettings = new System.Windows.Forms.Label();
-            this.PnlHelpDetail = new System.Windows.Forms.Panel();
+            this.PnlHelpDetail = new DevTool.CustomControl.CustomPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LblTitleHelper = new System.Windows.Forms.Label();
             this.PnlD0 = new DevTool.CustomControl.CustomPanel();
             this.BtnDefault = new System.Windows.Forms.Button();
             this.ChkEnableTranslate = new System.Windows.Forms.CheckBox();
@@ -41,10 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LblAlwayOnTop = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.PnlHelpDetail.SuspendLayout();
             this.PnlD0.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +60,6 @@
             this.BtnTranslateSettingsHelp.Size = new System.Drawing.Size(37, 37);
             this.BtnTranslateSettingsHelp.TabIndex = 3;
             this.BtnTranslateSettingsHelp.UseVisualStyleBackColor = true;
-            this.BtnTranslateSettingsHelp.Click += new System.EventHandler(this.BtnTranslateSettingsHelp_Click);
             // 
             // LblTranslateSettings
             // 
@@ -75,20 +74,66 @@
             // 
             // PnlHelpDetail
             // 
-            this.PnlHelpDetail.BackColor = System.Drawing.Color.Blue;
+            this.PnlHelpDetail.BackColor = System.Drawing.Color.Indigo;
+            this.PnlHelpDetail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
             this.PnlHelpDetail.Controls.Add(this.label6);
             this.PnlHelpDetail.Controls.Add(this.label5);
             this.PnlHelpDetail.Controls.Add(this.label4);
-            this.PnlHelpDetail.Controls.Add(this.label3);
-            this.PnlHelpDetail.Location = new System.Drawing.Point(3, 0);
+            this.PnlHelpDetail.Controls.Add(this.LblTitleHelper);
+            this.PnlHelpDetail.ForeColor = System.Drawing.Color.White;
+            this.PnlHelpDetail.Location = new System.Drawing.Point(0, 0);
             this.PnlHelpDetail.Name = "PnlHelpDetail";
-            this.PnlHelpDetail.Size = new System.Drawing.Size(794, 224);
+            this.PnlHelpDetail.Size = new System.Drawing.Size(807, 224);
             this.PnlHelpDetail.TabIndex = 6;
             this.PnlHelpDetail.Visible = false;
-            this.PnlHelpDetail.Click += new System.EventHandler(this.PnlD0_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(37, 169);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(322, 20);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Copy the text to  clipboard after translated";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(37, 132);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(329, 20);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Speech the text when click on Volume Icon";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(37, 95);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(355, 20);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Translate the text selected or double click in this";
+            // 
+            // LblTitleHelper
+            // 
+            this.LblTitleHelper.AutoSize = true;
+            this.LblTitleHelper.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTitleHelper.ForeColor = System.Drawing.Color.White;
+            this.LblTitleHelper.Location = new System.Drawing.Point(41, 28);
+            this.LblTitleHelper.Name = "LblTitleHelper";
+            this.LblTitleHelper.Size = new System.Drawing.Size(237, 30);
+            this.LblTitleHelper.TabIndex = 0;
+            this.LblTitleHelper.Text = "Translation Settings";
             // 
             // PnlD0
             // 
+            this.PnlD0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.PnlD0.BorderColor = System.Drawing.Color.Transparent;
             this.PnlD0.Controls.Add(this.BtnDefault);
             this.PnlD0.Controls.Add(this.ChkEnableTranslate);
@@ -102,9 +147,8 @@
             this.PnlD0.ForeColor = System.Drawing.Color.White;
             this.PnlD0.Location = new System.Drawing.Point(0, 108);
             this.PnlD0.Name = "PnlD0";
-            this.PnlD0.Size = new System.Drawing.Size(800, 400);
+            this.PnlD0.Size = new System.Drawing.Size(805, 400);
             this.PnlD0.TabIndex = 5;
-            this.PnlD0.Click += new System.EventHandler(this.PnlD0_Click);
             // 
             // BtnDefault
             // 
@@ -158,6 +202,7 @@
             // 
             // CboOutLang
             // 
+            this.CboOutLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboOutLang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CboOutLang.FormattingEnabled = true;
             this.CboOutLang.Location = new System.Drawing.Point(283, 122);
@@ -167,6 +212,7 @@
             // 
             // CboInLang
             // 
+            this.CboInLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboInLang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CboInLang.FormattingEnabled = true;
             this.CboInLang.Location = new System.Drawing.Point(283, 72);
@@ -207,62 +253,18 @@
             this.LblAlwayOnTop.TabIndex = 2;
             this.LblAlwayOnTop.Text = "Enable:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(41, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(237, 30);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Translation Settings";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(37, 169);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(322, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Copy the text to  clipboard after translated";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(37, 132);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(329, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Speech the text when click on Volume Icon";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(37, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(355, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Translate the text selected or double click in this";
-            // 
             // FrmTranslate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.Controls.Add(this.PnlHelpDetail);
             this.Controls.Add(this.PnlD0);
             this.Controls.Add(this.BtnTranslateSettingsHelp);
             this.Controls.Add(this.LblTranslateSettings);
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FrmTranslate";
-            this.Size = new System.Drawing.Size(800, 508);
+            this.Size = new System.Drawing.Size(805, 508);
             this.Load += new System.EventHandler(this.FrmTranslate_Load);
             this.PnlHelpDetail.ResumeLayout(false);
             this.PnlHelpDetail.PerformLayout();
@@ -287,8 +289,8 @@
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.CheckBox ChkEnableTranslate;
         private System.Windows.Forms.Button BtnDefault;
-        private System.Windows.Forms.Panel PnlHelpDetail;
-        private System.Windows.Forms.Label label3;
+        private CustomControl.CustomPanel PnlHelpDetail;
+        private System.Windows.Forms.Label LblTitleHelper;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

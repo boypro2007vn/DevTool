@@ -94,5 +94,29 @@ namespace DevTool.Properties {
                 this["ALONTOPShortcut"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RunAtStatupEnable {
+            get {
+                return ((bool)(this["RunAtStatupEnable"]));
+            }
+            set {
+                this["RunAtStatupEnable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ALONTOEnable {
+            get {
+                return ((bool)(this["ALONTOEnable"]));
+            }
+            set {
+                this["ALONTOEnable"] = value;
+            }
+        }
     }
 }

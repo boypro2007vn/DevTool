@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -76,11 +76,24 @@
   <ItemGroup>
     <Compile Include="Common\ClipboardHelper.cs" />
     <Compile Include="Common\FormCommon.cs" />
+    <Compile Include="Common\RoundedRectangleF.cs" />
+    <Compile Include="CustomControl\CustomCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\CustomCheckbox.Designer.cs">
+      <DependentUpon>CustomCheckbox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControl\CustomPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomControl\CustomPanel.Designer.cs">
       <DependentUpon>CustomPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\CustomSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControl\CustomSettings.Designer.cs">
+      <DependentUpon>CustomSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\ClipboardData.cs" />
     <Compile Include="Model\Translator.cs" />

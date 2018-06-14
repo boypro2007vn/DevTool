@@ -49,7 +49,7 @@
             // 
             // PnlHeader
             // 
-            this.PnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(53)))), ((int)(((byte)(76)))));
+            this.PnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(202)))));
             this.PnlHeader.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
             this.PnlHeader.Controls.Add(this.Lbl010);
             this.PnlHeader.Controls.Add(this.PicLogo);
@@ -124,7 +124,7 @@
             // 
             // PnlTabBar
             // 
-            this.PnlTabBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(54)))), ((int)(((byte)(76)))));
+            this.PnlTabBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.PnlTabBar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
             this.PnlTabBar.Controls.Add(this.BtnHome);
             this.PnlTabBar.Controls.Add(this.button2);
@@ -132,20 +132,22 @@
             this.PnlTabBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.PnlTabBar.Location = new System.Drawing.Point(0, 53);
             this.PnlTabBar.Name = "PnlTabBar";
-            this.PnlTabBar.Size = new System.Drawing.Size(151, 522);
+            this.PnlTabBar.Size = new System.Drawing.Size(152, 522);
             this.PnlTabBar.TabIndex = 1;
             // 
             // BtnHome
             // 
             this.BtnHome.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
-            this.BtnHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
+            this.BtnHome.FlatAppearance.BorderSize = 0;
+            this.BtnHome.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.BtnHome.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
             this.BtnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnHome.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnHome.ForeColor = System.Drawing.Color.White;
             this.BtnHome.Image = global::DevTool.Properties.Resources.home_icon;
-            this.BtnHome.Location = new System.Drawing.Point(0, 0);
+            this.BtnHome.Location = new System.Drawing.Point(2, 0);
             this.BtnHome.Name = "BtnHome";
-            this.BtnHome.Size = new System.Drawing.Size(151, 105);
+            this.BtnHome.Size = new System.Drawing.Size(149, 105);
             this.BtnHome.TabIndex = 0;
             this.BtnHome.TabStop = false;
             this.BtnHome.Text = "Home";
@@ -157,15 +159,16 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = global::DevTool.Properties.Resources.home_icon;
-            this.button2.Location = new System.Drawing.Point(0, 209);
+            this.button2.Location = new System.Drawing.Point(2, 209);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 105);
+            this.button2.Size = new System.Drawing.Size(149, 105);
             this.button2.TabIndex = 2;
             this.button2.TabStop = false;
             this.button2.Text = "Other";
@@ -176,14 +179,16 @@
             // BtnTran
             // 
             this.BtnTran.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
-            this.BtnTran.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
+            this.BtnTran.FlatAppearance.BorderSize = 0;
+            this.BtnTran.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.BtnTran.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(63)))), ((int)(((byte)(89)))));
             this.BtnTran.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnTran.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnTran.ForeColor = System.Drawing.Color.White;
             this.BtnTran.Image = global::DevTool.Properties.Resources.trans_icon;
-            this.BtnTran.Location = new System.Drawing.Point(0, 104);
+            this.BtnTran.Location = new System.Drawing.Point(2, 104);
             this.BtnTran.Name = "BtnTran";
-            this.BtnTran.Size = new System.Drawing.Size(151, 105);
+            this.BtnTran.Size = new System.Drawing.Size(149, 105);
             this.BtnTran.TabIndex = 1;
             this.BtnTran.TabStop = false;
             this.BtnTran.Text = "Translator";
@@ -194,6 +199,7 @@
             // 
             // PnlForm
             // 
+            this.PnlForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.PnlForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
             this.PnlForm.Controls.Add(this.PnlContent);
             this.PnlForm.Location = new System.Drawing.Point(0, 0);
@@ -203,9 +209,9 @@
             // 
             // PnlContent
             // 
-            this.PnlContent.Location = new System.Drawing.Point(157, 53);
+            this.PnlContent.Location = new System.Drawing.Point(149, 53);
             this.PnlContent.Name = "PnlContent";
-            this.PnlContent.Size = new System.Drawing.Size(797, 508);
+            this.PnlContent.Size = new System.Drawing.Size(805, 508);
             this.PnlContent.TabIndex = 0;
             // 
             // FrmSetting
